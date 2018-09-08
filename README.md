@@ -23,8 +23,5 @@ A project from Summer 2018 that compared the utility of newer ChIP methods ChIP-
     - Optional conversion from bigwig to wiggle format (data_preprocessing/bigwig_to_wiggle.sh)
 
 ## Links:
-[Lab Notebook](http://mordor/hoffmanlab/people/wxu/internal/2018/notebook.html)
+[Lab Notebook on (Mordor Server)](http://mordor/hoffmanlab/people/wxu/internal/2018/notebook.html)
 [Final Presentation](https://docs.google.com/presentation/d/1FhPC75eeJJSTKwuKS3tBcom6UNmZ6IY1GL0pMXwbf70/edit?usp=sharing)
-
-###Acknowledgements
-The student researcher would like to thank Dr. Hoffman for the opportunity + resources and Francis Nguyen for mentorship. Special thanks to Coby, Sam, and Davide of the Hoffman Lab as well.
