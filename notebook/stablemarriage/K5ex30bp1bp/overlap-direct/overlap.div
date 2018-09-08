@@ -1,0 +1,260 @@
+<div class="module" id="overlap_overlap-direct">
+  <h2><a href="#">^</a>  Overlap statistics (copy_segway.bed.gz)</h2>
+  <table>
+    <tr>
+      <td valign="top">
+        <ul>
+          <li> Overlap with features in <code>copy_segway.bed.gz</code></li>
+          <li> Units of overlap: <code>bases</code></li><br />
+          <li> Predictive ability of labels on features:
+            <br />
+            <a href="./K5ex30bp1bp/overlap-direct/overlap.performance.slide.png">
+              <img src="./K5ex30bp1bp/overlap-direct/overlap.performance.thumb.png" />
+            </a>
+            <br />
+            [ <a href="./K5ex30bp1bp/overlap-direct/overlap.performance.png">PNG</a> ]
+            [ <a href="./K5ex30bp1bp/overlap-direct/overlap.performance.slide.png">SLIDE</a> ]
+            [ <a href="./K5ex30bp1bp/overlap-direct/overlap.performance.pdf">PDF</a> ]
+            [ <a href="./K5ex30bp1bp/overlap-direct/overlap.performance.tab">TAB</a> ]
+          </li><br />
+          <li> Heatmap of overlap:
+            <ul>
+              <li>Color corresponds to degree of overlap between 
+                <code>bases</code> in the row group with those in the 
+                column group.
+              </li>
+              <br />
+              <a href="./K5ex30bp1bp/overlap-direct/overlap.slide.png">
+                <img src="./K5ex30bp1bp/overlap-direct/overlap.thumb.png" />
+              </a>
+              <br />
+              [ <a href="./K5ex30bp1bp/overlap-direct/overlap.png">PNG</a> ]
+              [ <a href="./K5ex30bp1bp/overlap-direct/overlap.slide.png">SLIDE</a> ]
+              [ <a href="./K5ex30bp1bp/overlap-direct/overlap.pdf">PDF</a> ]
+              [ <a href="./K5ex30bp1bp/overlap-direct/overlap.tab">TAB</a> ]
+            </ul>
+          </li>
+      </td>
+      <td>
+        Cumulative predictive performance of the segment labels
+        (each row is the performance of that label combined with all above it):
+        <br />
+        
+<table border="1" cellpadding="4" cellspacing="1">
+<tr>
+<td style="background-color:rgb(204, 204, 204)">label</td>
+<td style="background-color:rgb(204, 204, 204)">group</td>
+<td style="background-color:rgb(204, 204, 204)">precision</td>
+<td style="background-color:rgb(204, 204, 204)">recall
+</td>
+</tr>
+<tr><td>4</td><td>9</td><td>0.1508</td><td>0.343
+</td></tr>
+<tr><td>3</td><td>9</td><td>0.0853</td><td>0.602
+</td></tr>
+<tr><td>9</td><td>9</td><td>0.0632</td><td>0.662
+</td></tr>
+<tr><td>6</td><td>9</td><td>0.0549</td><td>0.698
+</td></tr>
+<tr><td>2</td><td>9</td><td>0.0442</td><td>0.763
+</td></tr>
+<tr><td>8</td><td>9</td><td>0.0375</td><td>0.809
+</td></tr>
+<tr><td>7</td><td>9</td><td>0.0330</td><td>0.853
+</td></tr>
+<tr><td>1</td><td>9</td><td>0.0269</td><td>0.951
+</td></tr>
+<tr><td>5</td><td>9</td><td>0.0252</td><td>0.990
+</td></tr>
+<tr><td>0</td><td>9</td><td>0.0228</td><td>1.000
+</td></tr>
+<tr><td>3</td><td>8</td><td>0.2006</td><td>0.162
+</td></tr>
+<tr><td>6</td><td>8</td><td>0.1965</td><td>0.232
+</td></tr>
+<tr><td>1</td><td>8</td><td>0.1888</td><td>0.525
+</td></tr>
+<tr><td>5</td><td>8</td><td>0.1782</td><td>0.615
+</td></tr>
+<tr><td>7</td><td>8</td><td>0.1690</td><td>0.705
+</td></tr>
+<tr><td>0</td><td>8</td><td>0.1606</td><td>0.794
+</td></tr>
+<tr><td>8</td><td>8</td><td>0.1546</td><td>0.877
+</td></tr>
+<tr><td>2</td><td>8</td><td>0.1455</td><td>0.937
+</td></tr>
+<tr><td>9</td><td>8</td><td>0.1389</td><td>0.976
+</td></tr>
+<tr><td>4</td><td>8</td><td>0.1350</td><td>1.000
+</td></tr>
+<tr><td>9</td><td>7</td><td>0.1796</td><td>0.182
+</td></tr>
+<tr><td>2</td><td>7</td><td>0.1581</td><td>0.374
+</td></tr>
+<tr><td>6</td><td>7</td><td>0.1501</td><td>0.454
+</td></tr>
+<tr><td>4</td><td>7</td><td>0.1445</td><td>0.534
+</td></tr>
+<tr><td>8</td><td>7</td><td>0.1314</td><td>0.654
+</td></tr>
+<tr><td>3</td><td>7</td><td>0.1186</td><td>0.758
+</td></tr>
+<tr><td>7</td><td>7</td><td>0.1111</td><td>0.850
+</td></tr>
+<tr><td>5</td><td>7</td><td>0.1050</td><td>0.927
+</td></tr>
+<tr><td>1</td><td>7</td><td>0.0841</td><td>0.978
+</td></tr>
+<tr><td>0</td><td>7</td><td>0.0770</td><td>1.000
+</td></tr>
+<tr><td>5</td><td>6</td><td>0.1944</td><td>0.194
+</td></tr>
+<tr><td>2</td><td>6</td><td>0.1912</td><td>0.410
+</td></tr>
+<tr><td>6</td><td>6</td><td>0.1835</td><td>0.496
+</td></tr>
+<tr><td>7</td><td>6</td><td>0.1635</td><td>0.617
+</td></tr>
+<tr><td>9</td><td>6</td><td>0.1507</td><td>0.699
+</td></tr>
+<tr><td>4</td><td>6</td><td>0.1418</td><td>0.738
+</td></tr>
+<tr><td>3</td><td>6</td><td>0.1266</td><td>0.812
+</td></tr>
+<tr><td>8</td><td>6</td><td>0.1167</td><td>0.875
+</td></tr>
+<tr><td>1</td><td>6</td><td>0.0984</td><td>0.972
+</td></tr>
+<tr><td>0</td><td>6</td><td>0.0907</td><td>1.000
+</td></tr>
+<tr><td>0</td><td>5</td><td>0.6628</td><td>0.177
+</td></tr>
+<tr><td>1</td><td>5</td><td>0.6396</td><td>0.522
+</td></tr>
+<tr><td>2</td><td>5</td><td>0.5877</td><td>0.635
+</td></tr>
+<tr><td>9</td><td>5</td><td>0.5490</td><td>0.702
+</td></tr>
+<tr><td>8</td><td>5</td><td>0.5123</td><td>0.784
+</td></tr>
+<tr><td>5</td><td>5</td><td>0.4784</td><td>0.842
+</td></tr>
+<tr><td>7</td><td>5</td><td>0.4493</td><td>0.902
+</td></tr>
+<tr><td>4</td><td>5</td><td>0.4333</td><td>0.927
+</td></tr>
+<tr><td>6</td><td>5</td><td>0.4191</td><td>0.951
+</td></tr>
+<tr><td>3</td><td>5</td><td>0.3927</td><td>1.000
+</td></tr>
+<tr><td>6</td><td>4</td><td>0.1543</td><td>0.240
+</td></tr>
+<tr><td>5</td><td>4</td><td>0.1296</td><td>0.559
+</td></tr>
+<tr><td>4</td><td>4</td><td>0.1092</td><td>0.644
+</td></tr>
+<tr><td>3</td><td>4</td><td>0.0872</td><td>0.804
+</td></tr>
+<tr><td>9</td><td>4</td><td>0.0752</td><td>0.873
+</td></tr>
+<tr><td>7</td><td>4</td><td>0.0637</td><td>0.928
+</td></tr>
+<tr><td>0</td><td>4</td><td>0.0534</td><td>0.949
+</td></tr>
+<tr><td>8</td><td>4</td><td>0.0466</td><td>0.967
+</td></tr>
+<tr><td>2</td><td>4</td><td>0.0411</td><td>0.985
+</td></tr>
+<tr><td>1</td><td>4</td><td>0.0328</td><td>1.000
+</td></tr>
+<tr><td>3</td><td>3</td><td>0.3025</td><td>0.238
+</td></tr>
+<tr><td>7</td><td>3</td><td>0.2426</td><td>0.362
+</td></tr>
+<tr><td>8</td><td>3</td><td>0.2194</td><td>0.483
+</td></tr>
+<tr><td>9</td><td>3</td><td>0.2040</td><td>0.565
+</td></tr>
+<tr><td>4</td><td>3</td><td>0.1956</td><td>0.615
+</td></tr>
+<tr><td>0</td><td>3</td><td>0.1830</td><td>0.714
+</td></tr>
+<tr><td>5</td><td>3</td><td>0.1741</td><td>0.793
+</td></tr>
+<tr><td>1</td><td>3</td><td>0.1496</td><td>0.915
+</td></tr>
+<tr><td>2</td><td>3</td><td>0.1417</td><td>0.973
+</td></tr>
+<tr><td>6</td><td>3</td><td>0.1382</td><td>1.000
+</td></tr>
+<tr><td>7</td><td>2</td><td>0.1420</td><td>0.226
+</td></tr>
+<tr><td>8</td><td>2</td><td>0.1387</td><td>0.445
+</td></tr>
+<tr><td>4</td><td>2</td><td>0.1230</td><td>0.500
+</td></tr>
+<tr><td>3</td><td>2</td><td>0.1027</td><td>0.601
+</td></tr>
+<tr><td>5</td><td>2</td><td>0.0929</td><td>0.682
+</td></tr>
+<tr><td>9</td><td>2</td><td>0.0855</td><td>0.737
+</td></tr>
+<tr><td>6</td><td>2</td><td>0.0813</td><td>0.769
+</td></tr>
+<tr><td>2</td><td>2</td><td>0.0744</td><td>0.830
+</td></tr>
+<tr><td>1</td><td>2</td><td>0.0643</td><td>0.946
+</td></tr>
+<tr><td>0</td><td>2</td><td>0.0609</td><td>1.000
+</td></tr>
+<tr><td>4</td><td>1</td><td>0.0831</td><td>0.205
+</td></tr>
+<tr><td>7</td><td>1</td><td>0.0752</td><td>0.533
+</td></tr>
+<tr><td>6</td><td>1</td><td>0.0671</td><td>0.638
+</td></tr>
+<tr><td>8</td><td>1</td><td>0.0543</td><td>0.771
+</td></tr>
+<tr><td>2</td><td>1</td><td>0.0457</td><td>0.875
+</td></tr>
+<tr><td>5</td><td>1</td><td>0.0390</td><td>0.915
+</td></tr>
+<tr><td>9</td><td>1</td><td>0.0345</td><td>0.939
+</td></tr>
+<tr><td>3</td><td>1</td><td>0.0298</td><td>0.965
+</td></tr>
+<tr><td>0</td><td>1</td><td>0.0265</td><td>0.990
+</td></tr>
+<tr><td>1</td><td>1</td><td>0.0210</td><td>1.000
+</td></tr>
+<tr><td>9</td><td>0</td><td>0.0802</td><td>0.216
+</td></tr>
+<tr><td>4</td><td>0</td><td>0.0776</td><td>0.347
+</td></tr>
+<tr><td>8</td><td>0</td><td>0.0693</td><td>0.546
+</td></tr>
+<tr><td>5</td><td>0</td><td>0.0614</td><td>0.674
+</td></tr>
+<tr><td>7</td><td>0</td><td>0.0541</td><td>0.776
+</td></tr>
+<tr><td>6</td><td>0</td><td>0.0513</td><td>0.825
+</td></tr>
+<tr><td>3</td><td>0</td><td>0.0456</td><td>0.905
+</td></tr>
+<tr><td>2</td><td>0</td><td>0.0402</td><td>0.941
+</td></tr>
+<tr><td>0</td><td>0</td><td>0.0356</td><td>0.963
+</td></tr>
+<tr><td>1</td><td>0</td><td>0.0290</td><td>1.000
+</td></tr>
+</table>
+
+        <br />
+        [ <a href="./K5ex30bp1bp/overlap-direct/overlap.performance.tab">TAB</a> ]
+      </td>
+      </tr>
+    </table>
+  </ul>
+</div>
+

@@ -1,0 +1,12 @@
+# first column is objects read from left side of tab file
+# second column is objects read from top of tab file
+1	7
+0	6
+3	0
+2	5
+5	9
+4	1
+7	8
+6	4
+9	2
+8	3

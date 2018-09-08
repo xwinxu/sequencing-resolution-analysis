@@ -1,0 +1,2614 @@
+<!DOCTYPE HTML>
+<html>
+
+    <div class="topnav">
+        <a href="./segdata">Data</a>
+        <a class="active" href="#home">Home</a>
+    </div>
+
+
+   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+
+        .topnav {
+            overflow: hidden;
+            background-color: #555;
+        }
+
+        .topnav a {
+            float: right;
+            color: #777;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 19px;
+        }
+
+        .topnav a:hover {
+            background-color: #9898B0;
+            color: black;
+        }
+
+        .topnav a.active {
+            background-color: #9898B0;
+            color: white;
+        }
+        
+    *{
+        box-sizing: border-box;
+    }
+
+    .column3 {
+        float: left;
+        width: 30%;
+        padding: 5px;
+    }
+
+    .column2 {
+        float: left;
+        width: 50%;
+        padding: 5px;
+    }
+
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .collapsible {
+        background-color: #555;
+        color: white;
+        cursor: pointer;
+        padding: 15px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 16px;
+    }
+
+    .active, .collapsible:hover {
+        background-color: #9898B0;
+    }
+    
+    .collapsible:after {
+        content: '\002B';
+        color: white;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+        overflow: visible;
+    }
+
+    .active:after {
+        content: "\2212";
+        overflow-y: auto;
+    }
+    
+    .nestcontent {
+        padding: 0 15px;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+        background-color: #f1f1f1
+    }
+
+    .content {
+        padding: 0 14px;
+        max-height: 0;
+        overflow: auto;
+        transition: max-height 0.2s ease-out;
+        background-color: #f1f1f1;
+    }
+
+    </style>
+</head>
+
+<body>
+
+<style type="text/css">
+<!--
+.tab {margin-left: 40px;}
+-->
+
+table {
+      font-size: 14px;
+        margin-left:auto;
+          margin-right:auto;
+            border-collapse: collapse;
+        }
+
+        table th {
+              font-size: 14px;
+                font-weight: bold;
+                  border: 2px solid #999999;
+                    padding: 2px 7px;
+                }
+
+                table td {
+                      border: 2px solid #999999;
+                        padding: 7px 7px;
+                    }
+
+</style>
+
+<header>
+<h1> Points to Discuss </h1>
+</header>
+
+    <button class="collapsible">ChIP Data Spreadsheet</button>
+    <div class="content">
+    <p>    
+    <a href="https://docs.google.com/spreadsheets/d/19fBlY6oUBPh59qyfGxXPlSFcxYdMoNPygBocaOABIrQ/edit#gid=0">Full spreadsheet for both homo sapiens and drosophila data </a>
+    </p> </div>
+
+    <button class="collapsible">Notes from Experiments</button>
+    <div class="content">
+    <p>
+    Running segway on the entire human genome at 1 bp resolution may take 4 months; took 2.5 days for the 100 bp resolution, x100 is around 150 days or 4+ months.
+    <br>
+    Leave this one running and in parallel rub one that is only on chr21 at 100 and 1 bp resolutions to compare?
+    </p> </div>
+
+
+    <h1>Quick Reference</h1>
+
+    <button class="collapsible">Links to Databases for Searches</button>
+    <div class="content">
+    <p class="tab">
+    <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE55306">ChIP-nexus</a> 
+    <br>
+    <a href="https://www.ncbi.nlm.nih.gov/sra/?term=ChIP-Nexus">ChIP-nexus</a>
+    <br>
+    <a href="https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP01920"9>ChIP-exo</a>
+    <br>
+    </div>
+
+    <button class="collapsible">Segway Homo Sapiens Runs Command Logs</button>
+    <div class="content">
+        <p class="tab">
+        <a href="https://docs.google.com/document/d/1vwbmbhIENaz3sTSZbgBpc1fnrIbR3tKVXON6TGDbtKk/edit">Command Script</a>
+        <br>
+        **Note: banned from all.q, so must include --cluster-opt="-q hoffmangroup"
+    </div>
+    
+    <button class="collapsible">Homo Sapiens ChIP-exo/ChIP-nexus Experiments</button>
+    <div class="content">
+    
+    <table style="width:80%">
+	<tr>
+		<th>Cell line</th>
+		<th>Protein Targeted</th>
+		<th>ChIP-exo/ChIP-nexus reps</th>
+	</tr>
+	<tr>
+                <th>K562</th>
+                <th>TBP(TATA binding)</th>
+                <th><a href="https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP019209">3-exo</a><br>
+		<a href="https://www.ncbi.nlm.nih.gov/sra/SRX475444"> 2-nexus></a></th>
+        </tr>
+	<tr>
+            	<th>K562</th>
+                <th>Pol2(polymerase II)</th>
+	<th><a href="https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP019209">3-exo</a></th>
+        </tr>
+	<tr>
+                <th>K562</th>
+                <th>H3K4me3</th>
+                <th><a href="https://www.ncbi.nlm.nih.gov/sra/SRX3480269[accn]">2-exo</a></th>
+        </tr>
+	<tr>
+                <th>K562</th>
+                <th>TFIIB</th>
+                <th><a href="https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP019209">2-exo</a></th>
+        </tr>
+	<tr>
+                <th>MCF7</th>
+                <th>TFIIB</th>
+                <th><a href="https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP019209">2-exo</a></th>
+        </tr>
+	<tr>
+                <th>HepG2</th>
+                <th>TFIIB</th>
+                <th><a href="https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP019209">2-exo</a></th>
+        </tr>
+	<tr>
+                <th>HeLa</th>
+                <th>TFIIB</th>
+                <th><a href="https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP019209">2-exo</a></th>
+        </tr>
+	<tr>
+            	<th>HEK293T</th>
+                <th>CTCF</th>
+                <th><a href="https://www.ncbi.nlm.nih.gov/sra/SRX3172940">2-nexus</a></th>
+        </tr>
+	<tr>
+            	<th>GM12878</th>
+                <th>RAD21</th>
+                <th><a href="https://www.ncbi.nlm.nih.gov/sra/SRX3172940">1-nexus</a></th>
+        </tr>
+	<tr>
+            	<th>GM12878</th>
+                <th>SMC3</th>
+                <th><a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE72816">1-nexus</a></th>
+        </tr>
+	
+
+	</table>	 
+</div>
+
+    <button class="collapsible">Segway-Semi-Automated Genome Annotation Protocol</button>
+    <div class="content">
+	<p class="tab">-page 10 step2; p* should be p12; make a note to reader to check most updated version <br>
+	 -Box 3 can specify that miniconda installation already installs the dependencies 
+	<br> -Missing figures in the boxes of the new draft, but present in old (B2.3 typo)
+	<br> -Use '--no-check-certificate' in step 4 to connect to bismap.hoffmanlab.org insecurely	
+	<br> -Typo step 6; should be GRCh38 not GRCg38, the --track does not map to 
+	the correct file name when following the protocal; files are named something like
+	ENCFF509XSM.DOHH2.H3K4me1.bigWig not ENCFF509XSM.bigWig
+	<br> -Don't just copy and paste from the box; need the "" instead of '' sometimes
+	<br> -Wrong file names on annotate step; DOHH2_H3K27ac.genomedata and DOHH2_H3K27me3.genomedata
+	<br> -Step 17 wget link has changed: ftp://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_human/release_28/gencode.v28.chr_patch_hapl_scaff.annotation.gtf.gz instead
+	<br> -Calculate command should have gencode.v28.annotation.gtf.gz instead of 25	
+	<br>
+	<br>
+	- Issue with genomdata processing Drosophila data; Drosophila bedgraph files don't have the "chr" as expected in the naming convention
+    </p>
+    </div>
+
+
+<header>
+<h1> Papers + To Read </h1>
+</header>
+
+
+<button class="collapsible">Read</button>
+<div class="nestcontent">
+
+    <button class="collapsible">ChIP-nexus enables improved detection of in vivo transcription factor binding footprints</button>
+    <div class="content">
+
+    </div>
+
+    <button class="collapsible">Comprehensive Genome-wide Protein-DNA Interactions Detected at Single Nucleotide Resolution</button>
+    <div class="content"> 
+   
+    </div>
+    
+    <button class="collapsible">Characterizing protein-DNA binding event subtypes in ChIP-exo data</button>
+    <div class="content"> 
+
+    </div>
+
+    <button class="collapsible">Francis' Epigenomic Variation paper and Data Fusion review drafts</button>
+    <div class="content">
+
+    </div>
+</div>
+
+
+<button class="collapsible">To Be Read</button>
+<div class="nestcontent">
+    
+    <button class="collapsible">Unsupervised pattern discovery in human chromatin structure through genomic segmentation</button>
+    <div class="content">
+
+</div>
+    <button class="collapsible">Umap & Bismap: quantifying genome and methylone mappability</button>
+    <div class="content">
+
+</div>
+    <button class="collapsible">Identifying & mitigating bias in next generation sequencing methods for chromatin biology</button>
+     <div class="content">
+
+</div>
+    <button class="collapsible">Prediction of Chromatin Accessbility in Gene-Regultory Regions from Transcriptomics Data</button>
+    <div class="content">
+
+</div>
+    <button class="collapsible">Evidence for nucleosome depletion at active regulatory regions genome-wide</button>
+    <div class="content">
+
+    </div>
+</div>
+
+
+<header>
+<h1> Effects of ChIP-exo and ChIP-nexus on Segway Performance </h1>
+</header>
+
+<button class="collapsible">Week 1: Segway Protocol Run</button>
+<div class="nestcontent">
+
+    <button class="collapsible">April 23 2018</button>
+    <div class="content">
+    <p>
+    -First day; orientation + setting up accounts    
+	-Started reading papers + discussing project ideas
+    </p>
+    </div>
+
+	<button class="collapsible">April 24 2018</button>
+	<div class="content">
+    <p>-Attended orientation <br> -Learned bash & shell commands <br>
+	-Installed bioconda and Segway packages <br> -Made lab notebook <br>
+	-Attempted to run a procedure using Segway 
+    </p>
+    </div>
+
+	<button class="collapsible">April 25 2018</button>
+	<div class="content"><p>-Attended occupational health meeting <br>
+	-Continued to run a procedure following the Segway procedure <br>
+	-Set up data directories in other node environments <br>
+	-Error message: cclplus error unrecognized command line option "-std=gnu++11"
+	whilst following Segway paper <br>
+	-Note to self: run biocLite before running Rsamtools, make sure bin/ exists in
+	my home dir before installing sambamba	 
+    </p>
+    </div>
+
+
+	<button class="collapsible">April 26 2018</button>
+    <div class="content"><p>-Continued to attempt to download DOHH2 H3K4me1 datasets (prev server issue) 
+	-Note to self: for step 4 of Segway procedure, use '--no-check-certificate' option
+	<br>-Wrote sigtracktoGendata.sh to store signal data as Genomedata archive (in data dir)
+    <br>-Error: cloned genomedata from bitbucket but when running script errors occur. Followed format outlined in protocol.
+    <br>-Still yet to finish unique named Genomedata archives, started Segway section
+    <br>-Learned how to use bitbucket     
+    </p>
+    </div>
+
+	<button class="collapsible">April 27 2018</button>
+    <div class="content"><p>-Bug in Pytables; version 1.2.3 vs 1.2.11, load conda env libz.so to load before Pytables
+	<br> - pip install . instead of python setup.py install (or Genomdata needs to be run outside of conda
+    <br>-Continued onto Segway protocol after compiling the Genomedata files
+    <br>-Paper to reference: Umap and Bismap: quantifying genome and methylome mappability
+    <br>-Resource to note: BEDtools suite sub-commands for explanations
+    <br>-Note: don't run all jobs on head node, use command -qsub -q hoffmangroup ./
+	<br> -Add source activate segway in shell script
+	<br> -Trained segway model on the protocol ChIP seq data successfully with 10-label model
+	<br> -Command:segway --resolution=10 --num-instances=10 --minibatch-fraction=0.01 --num-labels=10 --max-train-rounds=10 --exclude-coords=exclude_coords.bed train ../2018-04-26_ChIPSeq_DOHH2_H3K4me1/*genomedata train_results
+    </p>
+    </div>
+
+</div>
+
+
+<button class="collapsible">Week 2: Visualize Signal Test Run</button>
+<div class="nestcontent">
+
+	<button class="collapsible">April 30  2018 </button>
+    <div class="content"><p>-Out of office: Exams/Move-out
+    </p></div>
+
+
+	<button class="collapsible">May 1 2018 </button>
+    <div class="content"><p>-Annotated genome with trained Segway model (continued with protocol)       
+    <br>-Script: annotate.sh
+	<br>-Used segtools to analyze the annotations
+	</p></div>
+
+
+	<button class="collapsible">May 2 2018 </button>
+    <div class="content"><p>-Visualized signal data and segmentation on UCSC Genome Browser
+	<br>-Created UCSC Genome account and uploaded file
+	<br>-Downloaded IGV and attempted to visualize files
+	<br>-Visualization Results from Segway Protocol (got expected results):
+	<br> <img src="./segtoolsgmtk/gmtk_parameters.stats.slide.png" alt="Signal matched to label" \
+	width="650" height="455">
+	<img src="./segtoolsgmtk/gmtk_parameters.slide.png" alt="Labels indicating contiguous segments" \
+        width="650" height="455">
+	<img src="./segtoolsgmtk/gmtk_parameters.graph.png" alt="Same visualization as above image" \
+        width="500" height="377">
+	<img src="./length_distn/length_distribution.png" alt="Graph denotes relative distribution of label" \
+        width="500" height="377">
+	<img src="./length_distn/segment_sizes.png" alt="Relative distribution of labels in overall fragments" \
+        width="500" height="377">       
+    </p>
+    </div>
+
+
+	<button class="collapsible">May 3 2018 </button>
+    <div class="content">
+    <p>-Webscrapped for ChIP-exo/ChIP-nexus data (in points to discuss)       
+    <br>
+	-Started presentation slide deck, read more papers 
+    </p>
+    </div>
+
+
+	<button class="collapsible">May 4 2018 </button>
+    <div class="content">
+    <p>-Read more papers and worked on presentation slide deck       
+    </p>
+    </div>
+</div>
+
+<button class="collapsible">Week 3: ChIP Sequencing Data Compilation </button>
+<div class="nestcontent">
+
+
+	<button class="collapsible">May 7 2018 </button>
+    <div class="content"><p>
+	-Continue search on drosophila dataset (compilation in points to discuss)
+    </p>
+    </div>
+
+    <button class="collapsible">Lab Meeting Feedback</button>
+    <div class="content">
+	<p>
+	Notes from lab meeting presentation: 
+	<br>
+	-exo might not catch regions that seq does (i.e. SAP30, SIN3A)
+	<br>
+	-Try to use drospohila as well
+	<br>
+	-ChIP-chip data? (drosophila)
+	<br>
+	-ChIP-exo vs seq; 1 less washing step
+	<br>
+	-Gene enhancer datasets
+	<br>
+	-100 bp seq, exo, 1 bp seq, 1bp exo, 100 bp nexus, 1 bp nexus
+	<br>
+	-ATAC-seq and DNase-seq also processed in 1 bp resolution (could also possibly test)
+	<br>
+	-No histone mark on data (only 3ac found thus far)
+	<br>
+	-exo + nexus QC
+	<br>
+	-Chem-seq (drug interactions/localizations)
+	<br>
+	-Single nucleotide resolution possible on Segway
+	<br>
+	-Pilot regions
+	<br>
+	-See if signal data is smoothed (may need to do pre-processing) + quality controlled
+	<br>
+	-Super enhancer or suppressive clusters (b/c of lack of histone marks)
+	<br>
+	-Alter track weights to make use of given input (exo/nexus)
+	<br>
+	-Reads in unmappable regions should be zeroed
+    </p>
+    </div>
+
+
+	<button class="collapsible">May 8 2018 </button>
+    <div class="content"><p>-Continued to compile data: <a href="https://docs.google.com/spreadsheets/d/19fBlY6oUBPh59qyfGxXPlSFcxYdMoNPygBocaOABIrQ/edit#gid=0">ChIP data </a>
+	<br>
+	-Wrote a script to automatically fetch SRR codes from GEO site
+	<br>
+	-Drafted a script to automatically download datasets and pre-process raw data into BAM files from SAM conversion
+    </p>
+    </div>
+
+
+	<button class="collapsible">May 9 2018 </button>
+    <div class="content">
+    <p>-Finished compiling GEO datasets onto excel spreadsheet
+    <br>
+	-Wrote script to automatically download the raw data and convert the fastq format to BAM
+	<br>
+	Experimental plan:
+	<br>
+	-Experiment 1: 100 bp Exo/Nexus x homo sapien (K562, MCF7) & drosophila (whole embryo, KC167, S2)
+	<br>
+	-Experiment 2: 100 bp ChIP-seq x homo sapien (K562, MCF7) & drosophila (whole embryo, KC167, S2)
+	<br>
+	-Experiment 3: 1 bp Exo/Nexus x homo sapien (K562, MCF7) & drosophila (whole embryo, KC167, S2)
+	<br>
+	-Experiment 4: 1 bp ChIP-seq x homo sapien (K562, MCF7) & drosophila (whole embryo, KC167, S2)
+	<br>
+	--> To also include RNA-seq & DNase-seq/ATAC-seq(seems to have more data, more popular) data for each run (total of 20 runs)
+	<br>
+	---> To potentially incorporate Chem-seq data with the best resolution and re-run to see if annotation quality increases
+    </p>
+    </div>
+
+	<button class="collapsible">May 10 2018 </button>
+    <div class="content">
+    <p>-Compiled accession numbers into separate directories in .txt files for easy fastq dump function (script passes in txt file as arg)
+	<br>
+	-10 different directories created for 10 different experiments as outlined in May 9 2018 experimental outline
+	<br>
+	-Re-organized spreadsheet and fetched lab and ENCODE accession number
+	<br>-Continued to write script for automatically fetching data by accession number
+    </p>
+    </div>
+
+
+    <button class="collapsible">May 11 2018 </button>
+    <div class="content">
+    <p>-Re-wrote script structure: 1 to download fastq files and 1 to align
+	<br>
+	-1st script cannot run on qsub or qlogin because on internet access requirement
+	<br>
+	-Note: data only downloads into 1 fastq file, meaning that the sequences are not separated by strand (we may need to use something to interpret)
+	<br>
+	-Made 1 directory per cell line and assay, and fast dumped all the raw data into each respective one (left to run over the weekend)
+	<br>
+	-Wrote 2nd script to convert the files accordingly
+    </p>
+    </div>
+</div>
+
+
+<button class="collapsible"> Week 4: Data Processing + Continued Searching</button>
+<div class="nestcontent">
+
+
+	<button class="collapsible"> May 14 2018</button>
+    <div class="content">
+    <p>-Downloaded all fastq files and ran multiple script attempts to convert it into a BAM format
+	<br>
+	<a href="https://github.com/mahmoudibrahim/JAMM/wiki/ChIP-Seq-Alignment-and-Processing-Pipeline">ChIP seq alignment and processing pipeline using bowtie</a>
+    </p>
+    </div>
+
+
+
+        <button class="collapsible"> May 15 2018 </button>
+        <div class="content"><p>-Continued to refine script to convert files into BAM format
+	<br>
+	-Note: the samtools sort doesn't automatically output a bam file. Must specify sorted .bam. Either use -o option for output or > to redirect it
+        <br>
+	-Received H4H login details from Zhibin to eventually get the available ENCODE ChIP seq data from mordor 
+	</p></div>
+
+
+
+        <button class="collapsible"> May 16 2018 </button>
+        <div class="content"><p>-Re-aligned drosophila genomes with the correct version of the drosophila genome, left to run over night
+	<br>
+	-Note: do not rename files to different extensions; corrupted my bam files and had to regenerate for the human samples
+         </p></div>
+
+
+
+        <button class="collapsible"> May 17 2018 </button>
+        <div class="content"><p>-Wrote and ran separate scripts to then index the bam files on both human and drosophila
+	<br>
+	-List of commands on <a href="https://docs.google.com/document/d/1vwbmbhIENaz3sTSZbgBpc1fnrIbR3tKVXON6TGDbtKk/edit#">google docs</a>
+         </p></div>
+
+
+
+        <button class="collapsible"> May 18 2018 </button>
+        <div class="content"><p>-Wrote and ran a script using bedtools genomecov to convert BAM files into .bedgraph for Segway runs (used -split and -bg options, genome in .txt)
+	<br>
+	-When converting BAM file, can also use bedtools bamtobed but that will convert it into a BED file versus a bedGraph file that would be better for Segway
+	<br>
+	-Useful links for bedgraph conversion (can also use MACS, but peaks would not be as smooth): 
+	<a href="http://bedtools.readthedocs.io/en/latest/content/tools/genomecov.html">bedtools options</a>
+	<a href="http://quinlanlab.org/tutorials/bedtools/bedtools.html">bedtools tutorial </a>
+	<br>
+	-Note: there are two versions of the drosophila genome; one has more unknown alignments than the other. We used the one with more unknowns. Other is downloaded
+	<br>
+	-Re-aligned the MCF7_ex b/c output was weird the first time.
+         </p></div>
+     
+</div>
+
+
+<button class="collapsible">Week 5: Drosophila Search + Setbacks </button>
+<div class="nestcontent">
+
+	<button class="collapsible">May 21 2018 </button>
+        <div class="content"><p>-Wrote the bedgraph to genomedata script and ran it on one human cell line and protein (Pol II)
+	<br>
+	-Slight setback with drosophila because we have yet to find and download the necessary genome assembly files (all in fa format instead of agp) 
+	<br>
+	-Read papers
+	<br>
+	-Sent out emails to the researchers who only provided single strand ChIP data on GEO/SRA/ENCODE to see if they have both strands
+         </p></div>
+
+
+
+        <button class="collapsible"> May 22 2018</button>
+        <div class="content"><p>-Away for bioinformatics workshop at CAMH
+         </p></div>
+
+
+
+        <button class="collapsible"> May 23 2018</button>
+        <div class="content"><p>-Away for bioinformatics workshop (data carpentry)
+	<br>
+	-Learned segtools workflow and R studio (notes on my one note)
+         </p></div>
+
+
+
+        <button class="collapsible"> May 24 2018</button>
+        <div class="content"><p>-Emailed all the labs from where we obtained ChIP data to confirm the sample and treatment groups
+	<br>
+	-Downloaded further datasets and ran conversions
+	<br>
+	-Ran Segway on 100 and 1 bp resolution for both human cell lines (K562 and MCF7): minibatch 1% and set random seed to 4
+         </p></div>
+
+
+
+        <button class="collapsible"> May 25 2018</button>
+        <div class="content"><p>-Generated UMAP file for Release 6 of Drosophila run
+         </p></div>
+
+</div>
+
+<button class="collapsible"> Week 6: Umap Generation for DM6 + Finishing Data Pre-Processing</button>
+<div class="nestcontent">
+
+        <button class="collapsible"> May 28 2018</button>
+        <div class="content"><p>-Umap for drosophila release 6 kept having bowtie errors, so re-ran manually by storing path in a local variable
+	<br>
+	-S2R+ seq sample was not converting to bedgraph, so re-fastq dumped it into the directory and re-ran conversion
+	<br>
+	-Segway still running for 100 bp and 1 bp from the weekend (Saturday May 26)
+         </p></div>
+
+
+
+        <button class="collapsible"> May 29 2018</button>
+        <div class="content"><p>-Umap for drosophila; problem in the code; should be WAITID instead of 1 for one of the IDs -> load index first in order for rest of the job queue to work
+	<br>
+	<a href="https://www.ncbi.nlm.nih.gov/assembly/GCF_000001215.4/"> Link to Release 6 Drosophila USCS </a>
+	<br>
+	-Re-aligned drosophila cell lines using new fasta file (need all fa files, found in Francis' BDGP6 directory)
+	<br>
+	-2 Segway runs (100 bp resolutions) finished; proceeded to annotation step
+         </p></div>
+
+
+
+        <button class="collapsible">May 30 2018 </button>
+        <div class="content"><p>-1bp resolution runs finally finished training after over 100 training rounds. Took around 4 days to complete vs 2 days for the 100 bp resolution. Entire human genome.
+	<br>
+	-Ran annotation on the train results for the 1 bp
+         </p></div>
+
+
+
+        <button class="collapsible"> May 31 2018</button>
+        <div class="content"><p>-Re-ran Segway jobs to account for missing data
+         </p></div>
+
+
+
+        <button class="collapsible"> June 01 2018</button>
+        <div class="content"><p>-Re-generated new Umap files to account for new S2 data with different read lengths
+         </p></div>
+
+</div>
+
+<button class="collapsible">Week 7: Segway Run 1/2 Homo Sapiens </button>
+<div class="nestcontent">
+
+        <button class="collapsible">June 04 2018 </button>
+        <div class="content">
+    <p>
+	Issue with segway runs; 100 bp resolutions finished but their error logs were problematic
+	<br>
+	1 bp resolutions refused to finish (segfaulted); error logs also had same issue as 100 bp "slice of chromosome data spans more than 1 supercontig"
+	<br>
+	-assumption is that the bedgraph file (confirmed w/ bedtools intersect) that contains the blacklisted regions (which is provided during the segway train command) which would cause it to give this error.
+	<br>
+	-possible solution: run bedtools intersect on all files and delete all lines from the bedgraphs themselves, AND allocate more memory to the processes by setting a different $TEMPDIR to the env or in the script itself to prevent "out of memory" error
+        <br>
+	<br>
+	Chose 30 max train rounds to be safe based on the log likelihoods from the first segway run:
+	<br>
+	<img src="./screenshots/Screenshot from 2018-06-08 10-18-06.png" alt="Signal matched to label" width="1000" height="555"> 
+	</p></div>
+
+
+
+        <button class="collapsible">Segway Run 1 </button>
+        <div class="content"><p>
+        <h3> ChIP-exo data from K562 100 bp</h3>
+	    <img src="./segdata/seg1gmtkl/gmtk_parameters.stats.png" alt="Signal matched to label" width="750" height="555">
+	    <img src="./segdata/seg1gmtkl/gmtk_parameters.graph.png" alt="Signal matched to label" width="650" height="455">
+    	<img src="./segdata/seg1gmtkl/gmtk_parameters.slide.png" alt="Signal matched to label" width="650" height="455">
+	    <img src="./segdata/seg1lenl/length_distribution.png" alt="Signal matched to label" width="650" height="455">
+    	<img src="./segdata/seg1lenl/segment_sizes.slide.png" alt="Signal matched to label" width="650" height="455">
+    
+    <br>
+
+        <h3> ChIP-exo data from K562 1 bp</h3>
+    	<img src="./segdata/seg1gmtk2/gmtk_parameters.stats.png" alt="Signal matched to label" width="750" height="555">
+        <img src="./segdata/seg1gmtk2/gmtk_parameters.graph.png" alt="Signal matched to label" width="650" height="455">
+        <img src="./segdata/seg1gmtk2/gmtk_parameters.slide.png" alt="Signal matched to label" width="650" height="455">
+        <img src="./segdata/seg1len2/length_distribution.png" alt="Signal matched to label" width="650" height="455">
+        <img src="./segdata/seg1len2/segment_sizes.slide.png" alt="Signal matched to label" width="650" height="455">
+        	
+    <br>
+
+	    <h3> ChIP-exo data from MCF7 100 bp<h3/>
+	    <img src="./segdata/seg1gmtk3/gmtk_parameters.stats.png" alt="Signal matched to label" width="750" height="555">
+        <img src="./segdata/seg1gmtk3/gmtk_parameters.graph.png" alt="Signal matched to label" width="650" height="455">
+        <img src="./segdata/seg1gmtk3/gmtk_parameters.slide.png" alt="Signal matched to label" width="650" height="455">
+        <img src="./segdata/seg1len3/length_distribution.png" alt="Signal matched to label" width="650" height="455">
+        <img src="./segdata/seg1len3/segment_sizes.slide.png" alt="Signal matched to label" width="650" height="455">
+
+    <br>
+
+        <h3> ChIP-exo data from MCF7 1 bp</h3>
+        <img src="./segdata/seg1gmtk4/gmtk_parameters.stats.png" alt="Signal matched to label" width="750" height="555">
+        <img src="./segdata/seg1gmtk4/gmtk_parameters.graph.png" alt="Signal matched to label" width="650" height="455">
+        <img src="./segdata/seg1gmtk4/gmtk_parameters.slide.png" alt="Signal matched to label" width="650" height="455">
+        <img src="./segdata/seg1len4/length_distribution.png" alt="Signal matched to label" width="650" height="455">
+        <img src="./segdata/seg1len4/segment_sizes.slide.png" alt="Signal matched to label" width="650" height="455">
+         </p></div>
+
+
+
+
+        <button class="collapsible">Segway Run 2 </button>
+	    <div class="content"><p>
+        <h3> ChIP-seq data from K562 100 bp </h3>
+    	<img src="./segdata/seg2gmtkl/gmtk_parameters.stats.png" alt="Signal matched to label" width="750" height="570">
+	    <img src="./segdata/seg2gmtkl/gmtk_parameters.graph.png" alt="Signal matched to label" width="650" height="455">
+	    <img src="./segdata/seg2gmtkl/gmtk_parameters.slide.png" alt="Signal matched to label" width="650" height="455">
+	    <img src="./segdata/seg2lenl/length_distribution.png" alt="Signal matched to label" width="650" height="455">
+	    <img src="./segdata/seg2lenl/segment_sizes.slide.png" alt="Signal matched to label" width="650" height="455">
+        
+    <br>
+
+	    <div class="content"><p>
+        <h3> ChIP-seq data from MCF7 100 bp </h3>
+    	<img src="./segdata/seg2gmtk3/gmtk_parameters.stats.png" alt="Signal matched to label" width="750" height="570">
+        <img src="./segdata/seg2gmtk3/gmtk_parameters.graph.png" alt="Signal matched to label" width="650" height="455">
+        <img src="./segdata/seg2gmtk3/gmtk_parameters.slide.png" alt="Signal matched to label" width="650" height="455">
+        <img src="./segdata/seg2len3/length_distribution.png" alt="Signal matched to label" width="650" height="455">
+        <img src="./segdata/seg2len3/segment_sizes.slide.png" alt="Signal matched to label" width="650" height="455">
+         </p></div>
+
+
+
+
+        <button class="collapsible">Segway Run 3 </button>
+        <div class="content"><p>
+	    <img src="./segdata/seg3gmtkl/gmtk_parameters.stats.png" alt="Signal matched to label" width="650" height="455">
+	    <img src="./segdata/seg3gmtkl/gmtk_parameters.graph.png" alt="Signal matched to label" width="650" height="455">
+	    <img src="./segdata/seg3gmtkl/gmtk_parameters.slide.png" alt="Signal matched to label" width="650" height="455">
+	    <img src="./segdata/seg3lenl/length_distribution.png" alt="Signal matched to label" width="650" height="455">
+	    <img src="./segdata/seg3lenl/segment_sizes.slide.png" alt="Signal matched to label" width="650" height="455">
+         </p></div>
+
+</div>
+</div>
+
+<button class="collapsible">Week 8: Segway Run 3 + Analysis of Homo Sapiens Data </button> 
+<div class="nestcontent">
+
+        <button class="collapsible">June 11 2018 </button>
+        <div class="content"><p>-Successfully reran 1/5 1 bp resolution segway runs using an increased memory usage option; 8-20
+	<br>
+	-Script to clean up on all the nodes
+	<br>
+	-Emailed Kundaje about dm6 blacklist regions. He said he will try to generate one for dm6.
+         </p></div>
+
+
+
+        <button class="collapsible">June 12 2018 </button>
+        <div class="content"><p>-Successflly re-ran the remainder of Segway 1bp jobs and adjusted recolour.R script on annotation results for viewing in UCSC
+        <br><a href="https://www.rapidtables.com/web/color/RGB_Color.html">colour options</a>
+        <br>
+        -Wrote script getavgcount.sh to calculate the mean score of all unmappability bedgraphs; generally around 0.98 to 0.99 for drosophila, 0.55 for the human k36 umap. 
+        <br> mean may influence the unmappability file generations when determining the threshold value. (so far either 0.75 (counts below) or 0.20 (safe-ish/default-other files that were generated).
+        <br> &#8594 bdgp6 k40: 117479893(count) 0.99876(average)
+        <br> &#8594 bdgp6 k101: 120700195(count) 0.99804(average)
+        <br> &#8594 bdgp6 k50: 118211435(count) 0.998115(average)
+        <br> &#8594 bdgp6 k51: 118250196(count) 0.998184(average)
+        <br> &#8594 Hg38 k36: 83281231(count) 0.865126(average)
+        <br> by taking the above 0.75 mappability counts and the overall number of counts, it is estimated that for k40 (lowest read depth) we are cutting out around 3444667/120924560 = 0.3% of the genome
+        </p></div>
+
+
+
+        <button class="collapsible">June 13 2018 </button>
+        <div class="content">
+            <p>-Attended high level computing scinet workshop in neural networks and machine learning in Python + MRI image processing
+            <br>
+            -Re-ran past segway runs with random seed of 23 in order to see if run results are consistent throughout
+            <br>
+            -Read papers
+            </p>
+        </div>
+
+
+
+        <button class="collapsible">June 14 2018 </button>
+        <div class="nestcontent">
+            <button class="collapsible">Segway Run 4: K562seq 100bp</button>
+            <div class="nestcontent">
+                <img src="./segdata/seg4gmtk/gmtk_parameters.stats.slide.png" alt="Signal matched to label" width="650" height="455">
+                <img src="./segdata/seg4len/lenth_distribution.slide.png" alt="Signal matched to label" width="650"            height="455">
+            </div> 
+            <button class="collapsible">Segway Run 4: K562seq 1bp</button>
+            <div class="nestcontent">
+                <img src="./segdata/seg4gmtk2/gmtk_parameters.stats.slide.png" alt="Signal matched to label" width="650" height="455">
+                <img src="./segdata/seg4len2/length_distribution.slide.png" alt="Signal matched to label" width="650"           height="455">
+            </div>
+            <button class="collapsible">Segway Run 4: K562seq 1bp</button>
+            <div class="nestcontent">
+                <img src="./segdata/seg4gmtk3/gmtk_parameters.stats.slide.png" alt="Signal matched to label" width="650"           height="455">
+                <img src="./segdata/seg4len3/length_distribution.slide.png" alt="Signal matched to label"                       width="650"           height="455">
+            </div>
+        </div>
+
+
+
+        <button class="collapsible">June 15 2018 </button>
+        <div class="content">
+            <p>-Wrote python script seganalyze.py for Manhattan and Euclidean distances. 
+            <br>
+            -Issue: there are repeated labels, no unique mapping, does not address stable marriage problem.
+            <br>
+            -Solution: Max Libbrecht stable marriage and hungarian algorithm script that ensures a unique mapping for each label
+         </p></div>
+</div>
+
+<button class="collapsible"> Week 9: Statistical Analyses of Segway Run Data</button>
+<div class="nestcontent">
+
+        <button class="collapsible"> June 18 2018</button>
+        <div class="content">
+            -Ran segzoo on Segway Run 4 (essentially both MCF7/K562 exo + seq with a different random seed) results:
+            <br>
+            <br>
+            <span style="font-weight:bold">
+                K562seq 100 bp</span>
+            <br> <br>
+            <img src="./segzoo/plot.png" alt="Segzoo Plots" width="1000" height="455">
+            <br>
+  <br>
+            <br>
+            <span style="font-weight:bold">
+                K562seq 1 bp</span>
+            <br>
+             
+            <br>
+            <img src="./segzoo/plot2.png" alt="Segzoo Plots" width="1000" height="455">
+            <br> <br>
+            <br>
+            <span style="font-weight:bold">
+                MCF7seq 100 bp</span>
+            <br>
+  
+            <br>
+            <img src="./segzoo/plot3.png" alt="Segzoo Plots" width="1000" height="455">
+            <br> <br>
+            <br>
+            <span style="font-weight:bold">
+                MCF7seq 1 bp</span>
+            <br>
+  
+           
+            <br>
+            <img src="./segzoo/plot4.png" alt="Segzoo Plots" width="1000" height="455">
+            <br> <br>
+            <br>
+            <span style="font-weight:bold">
+                MCF7exo 100 bp</span>
+            <br>
+  
+            <br>
+            <img src="./segzoo/plot5.png" alt="Segzoo Plots" width="1000" height="455">
+            <br> <br>
+            <br>
+            <span style="font-weight:bold">
+                MCF7exo 1 bp</span>
+            <br>
+  
+            
+            <br>
+            <img src="./segzoo/plot6.png" alt="Segzoo Plots" width="1000" height="455">
+            <br> <br>
+            <br>
+            <span style="font-weight:bold">
+                K562exo 100 bp</span>
+            <br>
+            <br>
+            <img src="./segzoo/plot7.png" alt="Segzoo Plots" width="1000" height="455">
+            <br>
+            <br>
+            <span style="font-weight:bold">
+                K562exo 1 bp</span>
+            <br>
+            <br>
+            <img src="./segzoo/plot8.png" alt="Segzoo Plots" width="1000" height="455">
+        </div>
+
+        <button class="collapsible"> June 19 2018</button>
+        <div class="content">
+            -Run Max Libbrecht's scripts and attempt to re-order the labels in the Segway visualizations
+        </div>
+
+        <button class="collapsible"> Stable Marriage: Run 4 K562seq 100bp vs 1bp</button>
+        <div class="content">
+            <br>
+            <span style="font-weight:bold">Ordered Plots</span>
+            <div class="row">
+            <div class="column">
+            <img src="./stablemarriage/K5seq100bp1bp/overlap-ordered/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+        </div>
+            <div class="column">
+            <img src="./stablemarriage/K5seq100bp1bp/overlap-ordered/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+        </div>
+    </div>
+            <br>
+            
+            <span style="font-weight:bold">Direct Plots</span>
+              <div class="row">
+            <div class="column"> 
+            <img src="./stablemarriage/K5seq100bp1bp/overlap-direct/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+        </div>
+            <div class="column">
+            <img src="./stablemarriage/K5seq100bp1bp/overlap-direct/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+            </div>
+        </div>
+    </div>
+
+        <button class="collapsible"> Stable Marriage: Run 4 MCF7seq 100bp vs 1 bp</button>
+        <div class="content">
+            <span style="font-weight:bold">Ordered Plots</span>
+              <div class="row">
+            <div class="column"> 
+            <img src="./stablemarriage/MCseq100bp1bp/overlap-ordered/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+        </div>
+            <div class="column">
+            <img src="./stablemarriage/MCseq100bp1bp/overlap-ordered/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+            </div>
+            </div>
+
+           
+            <span style="font-weight:bold">Direct Plots</span>
+            <div class="row">
+            <div class="column">
+            <img src="./stablemarriage/MCseq100bp1bp/overlap-direct/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+        </div>
+            <div class="column">
+            <img src="./stablemarriage/MCseq100bp1bp/overlap-direct/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+        </div>
+    </div>
+        </div>
+
+        <button class="collapsible"> Stable Marriage: Run 4 MCF7exo 100bp vs 1 bp</button>
+        <div class="content">
+            <span style="font-weight:bold">Ordered Plots</span>
+            <div class="row">
+            <div class="column">
+            <img src="./stablemarriage/MCex100bp1bp/overlap-ordered/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+        </div>
+            <div class="column">
+            <img src="./stablemarriage/MCex100bp1bp/overlap-ordered/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+        </div>
+    </div>
+            <br>
+
+            <span style="font-weight:bold">Direct Plots</span>
+              <div class="row">
+            <div class="column">
+ 
+            <img src="./stablemarriage/MCex100bp1bp/overlap-direct/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+        </div>
+            <div class="column">
+            <img src="./stablemarriage/MCex100bp1bp/overlap-direct/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+            </div>
+        </div>
+    </div>
+
+    <button class="collapsible"> Stable Marriage: Run 4 K562exo 100bp vs 1 bp</button>
+        <div class="content">
+            <span style="font-weight:bold">Ordered Plots</span>
+            <div class="row">
+            <div class="column">
+            <img src="./stablemarriage/K5ex100bp1bp/overlap-ordered/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+        </div>
+            <div class="column">
+            <img src="./stablemarriage/K5ex100bp1bp/overlap-ordered/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+        </div>
+    </div>
+            <br>
+
+            <span style="font-weight:bold">Direct Plots</span>
+            <div class="row">
+            <div class="column">
+            <img src="./stablemarriage/K5ex100bp1bp/overlap-direct/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+        </div>
+            <div class="column">
+            <img src="./stablemarriage/K5ex100bp1bp/overlap-direct/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+        </div>
+    </div>
+        </div>
+        
+    <button class="collapsible"> June 20 2018</button>
+    <div class="content">
+        -Manipulate and understand the following R scripts generated by Segway:
+        <br>
+        &#8594 gmtk_parameters: gmtk_parameters.stats.R & gmtk_parameters.graph.R
+        <br>
+        &#8594 length_distribution: length_distribution.R
+        <br>
+        &#8594 aggregate_gene: feature_aggregation.R
+        <br>
+    </div>
+
+    <button class="collapsible"> June 21 2018</button>
+    <div class="content">
+            <h1> Comparing these with previous Stable Marriage runs (June 20) which have RAND_SEED=4 instead of 23. </h1>
+            
+            <h2>Segway Run 3: Stable Marriage K562seq 100bp & 1bp</h2> 
+            <span style="font-weight:bold">Ordered Plots</span>
+            <br>
+              <div class="row">
+            <div class="column"> 
+            <img src="./stablemarriage/K5seq100bp1bp/overlap-direct/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+            </div>
+            <div class="column">
+            <img src="./stablemarriage/K5seq100bp1bp/overlap-direct/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+            </div>      
+        </div>
+            <br>
+
+            <span style="font-weight:bold">Direct Plots</span>
+            <br>
+              <div class="row">
+            <div class="column">
+            <img src="./stablemarriage/K5seq100bp1bp/overlap-direct/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+        </div>
+            <div class="column">
+            <img src="./stablemarriage/K5seq100bp1bp/overlap-direct/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+            </div>
+        </div>
+            <br>
+            <h2>Segway Run 3: Stable Marriage MCF7seq 100bp & 1bp</h2>
+
+            <span style="font-weight:bold">Ordered Plots</span>
+            <br>
+              <div class="row">
+            <div class="column"> 
+            <img src="./stablemarriage/MCseq100bp1bp/overlap-direct/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+        </div>
+            <div class="column">
+            <img src="./stablemarriage/MCseq100bp1bp/overlap-direct/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+            </div>
+        </div>
+        <br>
+            <span style="font-weight:bold">Direct Plots</span>
+            <br>
+            <br>
+  <div class="row">
+            <div class="column">           
+            <img src="./stablemarriage/MCseq100bp1bp/overlap-direct/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+        </div>
+        <div class="column">
+            <img src="./stablemarriage/MCseq100bp1bp/overlap-direct/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+        </div>
+    </div>
+    <br>
+            <h2> Segway Run 3: Stable Marriage MCF7ex 100bp & 1bp </h2>
+
+            <span style="font-weight:bold">Ordered Plots</span>
+            <br>
+            <br>
+  <div class="row">
+            <div class="column">
+           
+            <img src="./stablemarriage/MCex100bp1bp/overlap-direct/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+        </div>
+            <div class="column">
+            <img src="./stablemarriage/MCex100bp1bp/overlap-direct/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+        </div>
+    </div>
+            <br>   
+
+            <span style="font-weight:bold">Direct Plots</span>
+            <br>
+            <br>
+  <div class="row">
+            <div class="column">
+           
+            <img src="./stablemarriage/MCex100bp1bp/overlap-direct/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+        </div>
+        <div class="column">
+            <img src="./stablemarriage/MCex100bp1bp/overlap-direct/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+        </div>
+    </div>
+            <br>   
+
+
+            <h2> Segway Run 2: Stable Marriage K562ex 100bp & 1bp </h2>
+
+            <span style="font-weight:bold">Ordered Plots</span>
+            <br>
+            <div class="row">
+            <div class="column">
+            <img src="./stablemarriage/K5ex100bp1bp/overlap-direct/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+            </div>
+            <div class="column">
+            <img src="./stablemarriage/K5ex100bp1bp/overlap-direct/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+        </div>
+    </div>
+            <br>   
+
+            <span style="font-weight:bold">Direct Plots</span>
+            <br>
+            <div class="row">
+                <div class="column">
+            <img src="./stablemarriage/K5ex100bp1bp/overlap-direct/overlap.performance.slide.png" alt="Stable Marriage Plots" width="700" height="700">
+        </div>
+                <div class="column">
+            <img src="./stablemarriage/K5ex100bp1bp/overlap-direct/overlap.slide.png" alt="Stable Marriage Plots" width="600" height="600">
+        </div>
+    </div>
+        </div>
+
+    <button class="collapsible"> June 22 2018</button>
+    <div class="content">
+    <h3>Looking into and running each line of the gmtk_parameters.stats.R script</h3>
+    After comparing two Segway runs via stable marriage, must replot the segway runs on the heatmaps so that there are better comparisons visually and also more constant labels (in order).
+    <br>
+    <br>
+    Example of variables/functions to explore:
+    source(file.path(segtools.r.dirname, 'common.R'))
+    <br>
+    > ls()
+    <br>[1] "as.slide"                 "at.log"                  
+    <br>[3] "at.pretty"                "cairo.loaded"            
+    <br>[5] "ddgram.legend"            "dev.pdf"                 
+    <br> [7] "dev.png"                  "dev.print.images"        
+    <br> [9] "label.log"                "labels.classify"         
+    <br>[11] "labels.log"               "lattice.optionlist.slide"
+    <br>[13] "map.mnemonics"            "print.image"             
+    <br>[15] "read.comment.lines"       "read.matrix"             
+    <br>[17] "read.metadata"            "read.mnemonics"          
+    <br>[19] "relevel.mnemonics"        "save.plot"               
+    <br>[21] "save.plots"               "segtools.r.dirname"      
+    <br>[23] "theme.slide" 
+
+    <br>
+    <h3>Comparing the overlap.tab file with the gmtk params and fraction segmentation graphs generated by Segway</h3>
+    For example: There is high base measurement for label 5 in the 1 bp resolution (image 1) and label 7 in 100 bp resolution (image 2) so,
+    <br>when running the Hungarian algorithm, it will rank these two labels as highest in similarity (hence the largest number in 7x5 and this will be the two
+    <br>labels that are mapped to eachother when the R script is changed to regenerate the heat maps after a segway training & annotation.
+    <br>
+    <br>
+    Note: 5 and 7 are high because they are the lowest signals on the heat map due to being the "control".
+    <br>
+    <br>
+    <div class="row">
+        <div class="column">
+            Image1:
+            <br>
+            <img src="./segdata/seg4len4/segment_sizes.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+        </div>
+        <div class="column">
+            Image2:
+            <br>
+            <img src="./segdata/seg4len3/segment_sizes.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+        </div>
+    </div>
+    <br>
+    Overlap.tab file outputted from stable marriage scripts by Max Libbrecht:
+    <br>
+    <br>    # mode=bases
+    <table border="1">
+        <tr><th></th><th>        0</th><th>         1</th><th>         2</th><th>         3</th><th>         4</th><th>         5</th><th>         6</th><th>         7</th><th>         8</th><th>         9</th><th>         none</th><th>      total    </th></tr>
+        <tr><td>0</td><td>         5090612</td><td>   4449367</td><td>   1966279</td><td>   10525630</td><td>  8971447</td><td>   136831647</td><td> 8940117</td><td>   10629039</td><td>  9882598</td><td>   9150623</td><td>   0</td><td>         206437359</td></tr>
+        <tr><td>1</td><td>         57147</td><td>     39342</td><td>     26678</td><td>     2917168</td><td>   1176556</td><td>   108818821</td><td> 215478</td><td>    29098</td><td>     739625</td><td>    55787</td><td>     0</td><td>        114075700</td></tr>
+        <tr><td>2</td><td>         25138</td><td>     13347</td><td>     9091</td><td>      514059</td><td>    3157746</td><td>   104540692</td><td> 340359</td><td>    20811</td><td>     817720</td><td>    2320</td><td>      0</td><td>         109441283</td></tr>
+        <tr><td>3</td><td>         925895 </td><td>   1275946 </td><td>  499688</td><td>    20622570</td><td>  10867444</td><td>  288271193</td><td> 3824854</td><td>   449873</td><td>    9644332</td><td>   3586061</td><td>   0</td><td>         339967856</td></tr>
+        <tr><td>4 </td><td>        10283022</td><td>  3566869  </td><td> 18185789</td><td>  22826346 </td><td> 24363151</td><td>  209144664</td><td> 7552221</td><td>   1627690</td><td>   8714944</td><td>  4521978</td><td>   0 </td><td>        310786674</td></tr>
+        <tr><td>5  </td><td>       5926732  </td><td> 184170 </td><td>   2410736  </td><td> 22106941  </td><td>16512054</td><td>  284244048 </td><td>4360231</td><td>   870964 </td><td>   7841631</td><td>   95812 </td><td>    0</td><td>         344553319</td></tr>
+        <tr><td>6   </td><td>      60716     </td><td>135089  </td><td>  26263   </td><td>  1283289 </td><td>  9640546 </td><td>  170083226</td><td> 2305044 </td><td>  73102  </td><td>   3521195</td><td>   12296 </td><td>    0</td><td>         187140766</td></tr>
+        <tr><td>7    </td><td>     27086  </td><td>   3490  </td><td>    10405  </td><td>   515452  </td><td>  522058  </td><td>  693273323</td><td> 80606   </td><td>  23564   </td><td>  177106 </td><td>   2480  </td><td>    0 </td><td>        694635570</td></tr>
+        <tr><td>8     </td><td>    680461  </td><td>  7443   </td><td>   124447 </td><td>   5296565 </td><td>  2256255 </td><td>  163062740</td><td> 327237  </td><td>  112816  </td><td>  763332  </td><td>  6859  </td><td>    0 </td><td>        172638155</td></tr>
+        <tr><td>9      </td><td>   749377   </td><td> 2490539 </td><td>  296325 </td><td>   6669235 </td><td>  26452182 </td><td> 334072151</td><td> 17813121</td><td>  1647165  </td><td> 14692535</td><td>  227525</td><td>    0 </td><td>        405110155</td></tr>
+    </table>
+    <br>
+
+</div>
+</div>
+<button class="collapsible"> Week 10: Data Visualization + Analysis</button>
+<div class="nestcontent">
+    <button class="collapsible"> Stable Marriage K562seq rand=4 vs rand=23</button>
+    <div class="content">
+        <h3>100bp vs 100bp / 1bp vs 1bp</h3>
+        <div class="row">
+            <div class="column2">
+                <img src="./stablemarriage/K5seq100bp4100bp23/overlap-ordered/overlap.performance.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+            </div>
+            <div class="column2">
+                <img src="./stablemarriage/K5seq1bp41bp23/overlap-ordered/overlap.performance.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+            </div>
+        </div>
+    </div>
+    <button class="collapsible"> Stable Marriage MCF7seq rand=4 vs rand=23</button>
+    <div class="content">
+        <h3>100bp vs 100bp / 1bp vs 1bp</h3>
+        <div class="row">
+            <div class="column2">
+                <img src="./stablemarriage/MCseq100bp4100bp23/overlap-ordered/overlap.performance.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+            </div>
+            <div class="column2">
+                <img src="./stablemarriage/MCseq1bp41bp23/overlap-ordered/overlap.performance.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+            </div>
+        </div>
+    </div>
+    <button class="collapsible"> Stable Marriage MCF7exo rand=4 vs rand=23</button>
+    <div class="content">
+        <h3>100bp vs 100bp / 1bp vs 1bp</h3>
+        <div class="row">
+            <div class="column2">
+                <img src="./stablemarriage/MCex100bp4100bp23/overlap-ordered/overlap.performance.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+            </div>
+            <div class="column2">
+                <img src="./stablemarriage/MCex1bp41bp23/overlap-ordered/overlap.performance.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+            </div>
+        </div>
+    </div>
+    <button class="collapsible"> Stable Marriage K562exo rand=4 vs rand=23</button>
+    <div class="content">
+        <h3>100bp vs 100bp / 1bp vs 1bp</h3>
+        <div class="row">
+            <div class="column2">
+                <img src="./stablemarriage/K5ex100bp4100bp23/overlap-ordered/overlap.performance.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+            </div>
+            <div class="column2">
+                <img src="./stablemarriage/K5ex1bp41bp23/overlap-ordered/overlap.performance.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+            </div>
+        </div>
+    </div>
+
+    <button class="collapsible"> Segway Run 5: Resolution 30bp </button>
+    <div class="content">
+        <h3>K562seq</h3>
+        <div class="row">
+            <div class="column2">
+                <img src="./segdata/seg5gmtk/gmtk_parameters.stats.slide.png" alt="Segment Sizes seg4len4 run" width="700" height="600">
+                <img src="./segdata/seg5gmtk/gmtk_parameters.slide.png" alt="Segment Sizes seg4len4 run" width="700" height="600">
+            </div>
+            <div class="column2">
+                <img src="./segdata/seg5len/segment_sizes.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+                <img src="./segdata/seg5len/length_distribution.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+            </div>
+        </div>
+        <h3>MCF7seq</h3>
+        <div class="row">
+            <div class="column2">
+                <img src="./segdata/seg5gmtk2/gmtk_parameters.stats.slide.png" alt="Segment Sizes seg4len4 run" width="700" height="600">
+                <img src="./segdata/seg5gmtk2/gmtk_parameters.slide.png" alt="Segment Sizes seg4len4 run" width="700" height="600">
+            </div>
+            <div class="column2">
+                 <img src="./segdata/seg5len2/segment_sizes.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+                <img src="./segdata/seg5len2/length_distribution.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+            </div>
+        </div>
+        <h3>MCF7exo</h3>
+        <div class="row">
+            <div class="column2">
+                <img src="./segdata/seg5gmtk3/gmtk_parameters.stats.slide.png" alt="Segment Sizes seg4len4 run" width="700" height="600">
+                <img src="./segdata/seg5gmtk3/gmtk_parameters.slide.png" alt="Segment Sizes seg4len4 run" width="700" height="600">
+            </div>
+            <div class="column2">
+                 <img src="./segdata/seg5len3/segment_sizes.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+                <img src="./segdata/seg5len3/length_distribution.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600"> 
+            </div>
+        </div>
+        <h3>K562exo</h3>
+        <div class="row">
+            <div class="column2">
+                <img src="./segdata/seg5gmtk4/gmtk_parameters.stats.slide.png" alt="Segment Sizes seg4len4 run" width="700" height="600"> 
+                <img src="./segdata/seg5gmtk4/gmtk_parameters.slide.png" alt="Segment Sizes seg4len4 run" width="700" height="600">
+            </div>
+            <div class="column2">
+                <img src="./segdata/seg5len4/segment_sizes.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+                <img src="./segdata/seg5len4/length_distribution.slide.png" alt="Segment Sizes seg4len4 run" width="600" height="600">
+            </div>
+        </div>
+    </div>
+
+    <button class="collapsible"> June 26 2018</button>
+    <div class="content">
+        <p class="tab">
+        -Find list of R scripts called by segtools: ~/miniconda2/envs/segway/lib/python2.7/site-packages/segtools/R in addition to the gmtk_parameters.stats.R, feature_aggregation.R, gmtk_parameters.graph.R, length_distribution.R
+        </p>
+        <p class="tab">
+        -Generation of heat map using R's heatmap function after running stable marriage algorithm on two runs
+        <h4>Inside the overlap-direct directory:</h4>
+        <p class="tab">
+        -level_map.tab: tsv file with labels of one mapped to the other
+        <br> 
+        -mnemonics_1_new.txt and mnemonics_2_new.txt: tsw file with labels in a different order
+        <br>
+        -overlap.div: html summarizing the precision and recall data b/t two sets of labels <a href="./overlap.html" target="_blank">example</a>
+        <br>
+        -overlap.performance.tab: tsv that delineates the precision and recall between two labels (aka every combo of 0-9 to 0-9 labels/groups);
+        Predictive ability of labels on features
+        <br>
+        -overlap.tab: tsv that delineates the number of overlapping base pairs between each of the labels b/t the two segments
+        <br>
+            <p class="tab">
+            <h4> Heatmap corresponds to the degree of overlap b/t bases in the row group with those in the column group</h4>
+            </p>
+        </p>
+        </p>
+    </div>
+</div>
+
+<button class="collapsible"> Week 11: Segway Run Stable Marriage Data Visualization Cont'd</button>
+<div class="nestcontent">
+    <button class="collapsible"> Stable Marriage Between Different Resolutions (No RNA/DNA-seq Runs)</button>
+    <div class="content">
+        <a href="./MarriagebtResolutionsFinal.nb.html">Link to MarriagebtResolutions R Notebook</a>
+    </div>    
+
+    <button class="collapsible">Stable Marriage Between Different Random Seeds (No RNA/DNA-seq Runs)</button>
+    <div class="content">
+        <a href="./MarriagebtRandSeedsFinal.nb.html">Link to MarriagebtRandSeeds R Notebook</a>
+    </div>
+
+    <button class="collapsible">Stable Marriage Between ChIP-exo and ChIP-seq (No RNA/DNA-seq Runs) </button>
+    <div class="content">
+        <a href="./MarriagebtAssays.nb.html">Link to MarriagebtAssays R Notebook</a>
+    </div>
+
+    <button class="collapsible">Stable Marriage Between Different Resolutions (RNA/DNA-seq Runs)</button>
+    <div class="content">
+         <a href="">Link to MarriagebtResolutionsRNADNA R Notebook</a>   
+    </div>
+
+    <button class="collapsible">Stable Marriage Between Different Random Seeds (RNA/DNA-seq Runs)</button>
+    <div class="content">
+         <a href="">Link to MarriagebtRandSeedsRNADNA R Notebook</a>   
+    </div>
+    
+    <button class="collapsible">Stable Marriage Between ChIP-exo and ChIP-seq (RNA/DNA-seq Runs) </button>
+    <div class="content">
+        <a href="">Link to MarriagebtAssaysRNA/DNA R Notebook</a>
+    </div>
+</div>
+
+<button class="collapsible"> Week 12: Re-run Segway Runs + Data Visualization for Stable Marriage </button>
+<div class="nestcontent">
+    <button class="collapsible">Runs with DNA/RNA-seq Data</button>
+    <div class="content">
+        -Chose rand seed from days from January 01 1970 to July 11 2018: 17723 
+        <br>
+        -Re-ran with all resolutions(both w/ and w/o the RNA/DNA-seq data): 100bp, 1bp, 2bp, 30bp, 50bp
+        <br>
+        -Re-ran with only RNA/DNA-seq data as control experiment
+    </div>
+
+    <button class="collapsible">Genomedata-close-data script to find LOD in GMTK mean output file</button>
+    <div class="content">
+        -Cannot scan bedgraph because genomedata probably normalizes the numbers
+        <br>
+        <a href="https://bitbucket.org/hoffmanlab/genomedata/src/default/genomedata/_close_data.py?fileviewer=file-view-default">Source code for genomedata_close_data.py</a>
+    </div>
+</div>
+
+<button class="collapsible"> Week 13: Re-run Segway Runs + Data Visualization for Stable Marriage </button>
+<div class="nestcontent">
+    <button class="collapsible">Segway Run 8 (Re-run with Rand Seed 17723)</button>
+    <div class="content">
+        -Failed, temporary directories kept getting deleted
+    </div>
+
+    <button class="collapsible">Segway Run 9 with RNA/DNA-seq (Rand Seed 17724)</button>
+    <div class="content">
+        -
+    </div>
+
+
+    <button class="collapsible">Genomedata-close-data script to find LOD in GMTK mean output file</button>
+    <button class="collapsible">Re-generating heatmaps + Ratio Heatmap</button>
+    <div class="content">
+        -Because segway's trained means are row normalized, we must further divide the limit of detection by the max value. So we fetched for that (the HOD) as well as for the LOD in the modified genomedata.py script. Lowest count was consistently 1 (which makes sense because 1 bp is the lowest you can parse at once). 
+        <br>
+        -Final pseudocount added: asinh(LOD/(2)) not asinh(LOD/(2*HOD))
+        -Unnormalized the gmtk means data first by multiplying by the max-min and adding the min
+        -Divided the graphs by each other then normalized with the max value of the entire matrix
+    </div>
+</div>
+
+<button class="collapsible"> Week 14: Using MACS2 Peak Calling To Normalize ChIP signal </button>
+<div class="nestcontent">
+    <button class="collapsible">Error logs for Segway Runs</button>
+    <div class="content">
+        -<a href="">Link to runs with their respective error logs</a>
+    </div>
+    <button class="collapsible">Errors from installing R packages July 26 2018</button>
+    <div class="content">
+        -error at if (nzchar(SHLIB_LIBADD)) SHLIB_LIBADD else character() : the length of parameter is zero
+        -attempt at making new conda environment; conda update r-base
+        -when attempting to install the chip processing pipeline:
+        <p> <i>Warning in untar2(tarfile, files, list, exdir, restore_times) :<br />skipping pax global extended headers<br />* installing to library &lsquo;/mnt/work1/users/home2/winniexu/miniconda2/envs/segway/lib/R/library&rsquo;<br />* installing *source* package &lsquo;spp&rsquo; ...<br />checking for gcc... /mnt/work1/software/gcc/6.2.0/bin/gcc<br />checking whether the C compiler works... yes<br />checking for C compiler default output file name... a.out<br />checking for suffix of
+            executables... <br />checking whether we are cross compiling... no<br />checking for suffix of object files... o<br />checking whether we are using the GNU C compiler... yes<br />checking whether /mnt/work1/software/gcc/6.2.0/bin/gcc accepts -g... yes<br />checking for /mnt/work1/software/gcc/6.2.0/bin/gcc option to accept ISO C89... none needed<br />checking for BZ2_bzDecompressInit in -lbz2... yes<br />checking whether we are using the GNU C++ compiler... yes<br />checking
+            whether /mnt/work1/software/gcc/6.2.0/bin/g++ accepts -g... yes<br />checking for grep that handles long lines and -e... /bin/grep<br />checking how to run the C++ preprocessor... /mnt/work1/software/gcc/6.2.0/bin/g++ -E<br />checking for a sed that does not truncate output... /bin/sed<br />checking for Boost headers version &gt;= 1.41.0... yes<br />checking for Boost's header version... 1_41<br />configure: creating ./config.status<br />config.status: creating src/Makevars<br
+            />** libs<br />g++ -std=gnu++11 -I/mnt/work1/users/home2/winniexu/miniconda2/envs/segway/lib/R/include -DNDEBUG -I"/mnt/work1/users/home2/winniexu/miniconda2/envs/segway/lib/R/library/Rcpp/include" -I/mnt/work1/users/home2/winniexu/miniconda2/envs/segway/include -I./ -D_FASTMAP -DMAQ_LONGREADS -fpic -I/mnt/work1/users/home2/winniexu/miniconda2/envs/segway/include -c bed2vector.cpp -o bed2vector.o<br />g++: error trying to exec 'cc1plus': execvp: No such file or
+            directory<br />make: *** [bed2vector.o] Error 1<br />ERROR: compilation failed for package &lsquo;spp&rsquo;<br />* removing &lsquo;/mnt/work1/users/home2/winniexu/miniconda2/envs/segway/lib/R/library/spp&rsquo;<br />* restoring previous &lsquo;/mnt/work1/users/home2/winniexu/miniconda2/envs/segway/lib/R/library/spp&rsquo;</i></p>
+        -was unable to install rsamtools in R, and thus was unable to install spp in order to run phantomqualtools
+        -issue was thought to be with R compatibility (since the R code in Anshul's script uses a very outdated method of parallelization, which might require an older version of R from 2014)
+        -However, R version was not a problem. I module unloaded gcc and was able to successfully install spp: install.packages("spp.1.15.2.tar.gz")
+        -Boost was also causing issues, I re-downloaded the latest version and set the environment variable: export BOOST_ROOT=$HOME/boost_1_67_0.tar.bz2
+    </div>
+</div>
+
+<button class="collapsible"> Week 15: Cross Correlation Analysis & MACs Peak Calling </button>
+<div class="nestcontent">
+    <button class="collapsible">PhantomQualTools Cross Correlation Analysis</button>
+    <div class="content">
+        <h1> Target: NSC (>=1.05) and RSC (>=1) </h1>
+        <h2>K562 ChIP-exo</h2>
+        <div class="row">
+            <div class="column3">
+                <h4> PolII</h4>
+                <embed src="./crosscorr/K562_ex/alnSRR3105728.sorted.cc.plot.pdf" width="500" height="500">
+            </div>
+            <div class="column3">
+                <h4>TFIIB</h4>
+                <embed src="./crosscorr/K562_ex/alnSRR3105729.sorted.cc.plot.pdf" width="500" height="500">
+            </div>
+            <div class="column3">
+                <h4>H2AZ</h4>
+                <embed src="./crosscorr/K562_ex/alnSRR6386688_1.cc.plot.pdf" width="500" height="500">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column3">
+                <h4>H3K4me3</h4>
+                <embed src="./crosscorr/K562_ex/alnSRR6386689_1.cc.plot.pdf" width="500" height="500">
+            </div>
+            <div class="column3">
+                <h4>TBP</h4>
+                <embed src="./crosscorr/K562_ex/alnSRR770729_1.sorted.cc.plot.pdf" width="500" height="500">
+            </div>
+            <div class="column3">
+                <h4>TBP</h4>
+                <embed src="./crosscorr/K562_ex/alnSRR770743_1.cc.plot.pdf" width="500" height="500">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column3">
+                <h4>H3K4me3</h4>
+                <embed src="./crosscorr/K562_ex/alnSRR6386682_1.cc.plot.pdf" width="500" height="500">
+            </div>
+            <div class="column3">
+                <h4>TBP</h4>
+                <embed src="./crosscorr/K562_ex/alnSRR770744_1.cc.plot.pdf" width="500" height="500">
+            </div>
+            <div class="column3">
+                <h4>H2AZ</h4>
+                <embed src="./crosscorr/K562_ex/alnSRR6386681_1.cc.plot.pdf" width="500" height="500">
+            </div>
+        </div>
+        <h2>K562 ChIP-seq</h2>
+        <div class="row">
+            <div class="column3">
+                <h4>H3K4me3</h4>
+                <embed src="./crosscorr/K562_seq/alnENCFF000VDX_1.sorted.cc.plot.pdf" width="500" height="500">
+            </div>
+            <div class="column3">
+                <h4>TBP</h4>
+                <embed src="./crosscorr/K562_seq/alnSRR1185445_1.sorted.cc.plot.pdf" width="500" height="500">
+            </div>
+            <div class="column3">
+                <h4>TFIIB</h4>
+                <embed src="./crosscorr/K562_seq/alnSRR502177_1_1.sorted.cc.plot.pdf" width="500" height="500">
+            </div>
+        </div>
+        <div class="row">
+            <div class="column3">
+                <h4>PolII</h4>
+                <embed src="./crosscorr/K562_seq/alnSRR6386683_1.sorted.cc.plot.pdf" width="500" height="500">
+            </div>
+            <div class="column3">
+                <h4>H2AZ</h4>
+                <embed src="./crosscorr/K562_seq/alnSRR6386684_1.sorted.cc.plot.pdf" width="500" height="500">
+            </div>
+            <div class="column3">
+                <h4>H2AZ</h4>
+                <embed src="./crosscorr/K562_seq/alnSRR6386685_1.sorted.cc.plot.pdf" width="500" height="500">
+            </div>
+        </div>
+        <h2>MCF7 ChIP-exo</h2>
+        <div class="row">
+            <div class="column3">
+                <h4>ERalpha</h4>
+                <embed src="./crosscorr/MCF7_ex/alnSRR6710667.sorted.cc.plot.pdf" width="500" height="500">
+            </div>
+            <div class="column3">
+                <h4>FoxA1</h4>
+                <embed src="./crosscorr/MCF7_ex/alnSRR6710669.sorted.cc.plot.pdf" width="500" height="500">
+            </div>
+            <div class="column3">
+                <h4>CTCF</h4>
+                <embed src="./crosscorr/MCF7_ex/alnSRR6710671.sorted.cc.plot.pdf" width="500" height="500">
+            </div>
+        </div>
+        <h2>MCF7 ChIP-seq</h2>
+        <div class="row">
+            <div class="column3">
+                <h4>CTCF</h4>
+                <embed src="./crosscorr/MCF7_seq/alnENCFF000SAO_1.sorted.cc.plot.pdf" width="500" height="500">
+            </div>
+            <div class="column3">
+                <h4>FoxA1</h4>
+                <embed src="./crosscorr/MCF7_seq/alnERR022028_1.sorted.cc.plot.pdf" width="500" height="500">
+            </div>
+            <div class="column3">
+                <h4>ERalpha</h4>
+                <embed src="./crosscorr/MCF7_seq/alnSRR3170060_1.sorted.cc.plot.pdf" width="500" height="500">
+            </div>
+        </div>
+    </div>
+    <button class="collapsible">PhantomPeakQualTools Summary Stats </button>
+    <div class="content">
+        <h3>K562 ChIP-exo</h3>
+        -Noticed that the estimated fragment length for sample SRR6386688 (H2AZ) is negative. No idea what this means, but have rerun the tagAlign and phantompeakqualtools on this sample. Results remain consistent with that of below. 
+        <table>
+    <tr>
+        <td>Protein</td>
+        <td>Number of Reads</td> 
+        <td>Est Frag Len</td>
+        <td>Strand CrossCorr @ FragLen</td>
+        <td>Read Len</td>
+        <td>Strand CC @ ReadLen</td>
+        <td>Strand Shift w/ Min CC</td>
+        <td>Min CC</td>
+        <td>NSC</td>
+        <td>RSC</td>
+        <td>Quality-Tag</td>
+    </tr>
+    <tr>
+        <td>PolII SRR3105728</td>
+        <td>35937724</td>
+        <td>80</td>
+        <td>0.203544370169789</td>
+        <td>45</td>
+        <td>0.1836995</td>
+        <td>1500</td>
+        <td>0.1411586</td>
+        <td>1.441955</td>
+        <td>1.466489</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>TFIIB SRR3105729</td>
+        <td>25862255</td>
+        <td>65</td>
+        <td>0.273092092232018</td>
+        <td>45</td>
+        <td>0.2698317</td>
+        <td>1500</td>
+        <td>0.226007</td>
+        <td>1.208334</td>
+        <td>1.074397</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>H2AZ SRR6386681</td>
+        <td> 22327594</td>
+        <td>90</td>
+        <td>0.0209057000586505</td>
+        <td>55</td>
+        <td>0.02133317</td>
+        <td>1500</td>
+        <td>0.01954698</td>
+        <td>1.06951</td>
+        <td>0.7606817</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>H3K4me3 SRR6386682</td>
+        <td>14344464</td>
+        <td>495</td>
+        <td>0.178394914685151</td>
+        <td>50</td>
+        <td>0.2457347</td>
+        <td>1500</td>
+        <td>0.1254962</td>
+        <td>1.421517</td>
+        <td>0.4399484</td>
+        <td>-1</td>
+    </tr>
+    <tr>
+        <td>TFIIB SRR3105729</td>
+        <td>25862255</td>
+        <td>65</td>
+        <td>0.273092092232018</td>
+        <td>45</td>
+        <td>0.2698317</td>
+        <td>1500</td>
+        <td>0.226007</td>
+        <td>1.208334</td>
+        <td>1.074397</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>H2AZ SRR6386688</td>
+        <td>41660738</td>
+        <td>-15</td>
+        <td>0.153129633808471</td>
+        <td>75</td>
+        <td>0.1593444</td>
+        <td>1500</td>
+        <td>0.1467551</td>
+        <td>1.043437</td>
+        <td>0.5063461</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>TBP SRR770729</td>
+        <td>61106105</td>
+        <td>95</td>
+        <td>0.0447891366527201</td>
+        <td>45</td>
+        <td>0.04803628</td>
+        <td>1500</td>
+        <td>0.043867</td>
+        <td>1.021021</td>
+        <td>0.2211734</td>
+        <td>-2</td>
+    </tr>
+    <tr>
+        <td>TBP SRR770743</td>
+        <td>97038185</td>
+        <td>85</td>
+        <td>0.02614190749278</td>
+        <td>50</td>
+        <td>0.03382353</td>
+        <td>1500</td>
+        <td>0.00568545</td>
+        <td>4.598037</td>
+        <td>0.7270026</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>TBP SRR770744</td>
+        <td>114034687</td>
+        <td>85</td>
+        <td>0.0264948111816262</td>
+        <td>40</td>
+        <td>0.03528376</td>
+        <td>1500</td>
+        <td>0.005865116</td>
+        <td>4.517355</td>
+        <td>0.7012455</td>
+        <td>0</td>
+    </tr>
+    </table>
+
+    <h3>K562 ChIP-seq</h3>
+
+        <table>
+    <tr>
+        <td>Protein</td>
+        <td>Number of Reads</td> 
+        <td>Est Frag Len</td>
+        <td>Strand CrossCorr @ FragLen</td>
+        <td>Read Len</td>
+        <td>Strand CC @ ReadLen</td>
+        <td>Strand Shift w/ Min CC</td>
+        <td>Min CC</td>
+        <td>NSC</td>
+        <td>RSC</td>
+        <td>Quality-Tag</td>
+    </tr>
+    <tr>
+        <td>H3K4me3 ENCFF000VDX</td>
+        <td>15733269</td>
+        <td>190</td>
+        <td>0.530843229702209</td>
+        <td>40</td>
+        <td>0.4171847</td>
+        <td>1500</td>
+        <td>0.1559187</td>
+        <td>3.404615</td>
+        <td>1.43503</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>TBP SRR1185445</td>
+        <td>19455362</td>
+        <td>175</td>
+        <td>0.192847297445456</td>
+        <td>55</td>
+        <td>0.1129156</td>
+        <td>1500</td>
+        <td>0.06779933</td>
+        <td>2.844384</td>
+        <td>2.771679</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>TFIIB SRR502177</td>
+        <td>4315098</td>
+        <td>125</td>
+        <td>0.0614186108697288</td>
+        <td>35</td>
+        <td>0.05862492</td>
+        <td>1500</td>
+        <td>0.05104478</td>
+        <td>1.20323</td>
+        <td>1.368554</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>PolII SRR6386683</td>
+        <td>23400524</td>
+        <td>80</td>
+        <td>0.134898981862426</td>
+        <td>50</td>
+        <td>0.1346424</td>
+        <td>1500</td>
+        <td>0.1126492</td>
+        <td>1.197514</td>
+        <td>1.011669</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>H2AZ SRR6386684</td>
+        <td>19645961</td>
+        <td>70</td>
+        <td>0.118586948839088</td>
+        <td>50</td>
+        <td>0.1190315</td>
+        <td>1500</td>
+        <td>0.1110422</td>
+        <td>1.067945</td>
+        <td>0.9443589</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td>H2AZ SRR6386685</td>
+        <td>29240305</td>
+        <td>120</td>
+        <td>0.0996356344297816</td>
+        <td>80</td>
+        <td>0.09962843</td>
+        <td>1500</td>
+        <td>0.09217329</td>
+        <td>1.08096</td>
+        <td>1.000966</td>
+        <td>1</td>
+    </tr>
+    </table>
+
+    <h3>MCF7 ChIP-exo</h3>
+
+            <table>
+    <tr>
+        <td>Protein</td>
+        <td>Number of Reads</td> 
+        <td>Est Frag Len</td>
+        <td>Strand CrossCorr @ FragLen</td>
+        <td>Read Len</td>
+        <td>Strand CC @ ReadLen</td>
+        <td>Strand Shift w/ Min CC</td>
+        <td>Min CC</td>
+        <td>NSC</td>
+        <td>RSC</td>
+        <td>Quality-Tag</td>
+    </tr>
+    <tr>
+        <td>ERalpha SRR6710667</td>
+        <td>32820366</td>
+        <td>105</td>
+        <td>0.33334349878371</td>
+        <td>45</td>
+        <td>0.2922856</td>
+        <td>1500</td>
+        <td>0.1836176</td>
+        <td>1.815423</td>
+        <td>1.377829</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>FoxA1 SRR6710669</td>
+        <td>37512553</td>
+        <td>100</td>
+        <td>0.354081251829708</td>
+        <td>45</td>
+        <td>0.3320491</td>
+        <td>1500</td>
+        <td>0.2854359</td>
+        <td>1.240493</td>
+        <td>1.47266</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>CTCF SRR6710671</td>
+        <td>38053319</td>
+        <td>85</td>
+        <td>0.444134749243051</td>
+        <td>45</td>
+        <td>0.3966845</td>
+        <td>1500</td>
+        <td>0.2192335</td>
+        <td>2.025852</td>
+        <td>1.267399</td>
+        <td>1</td>
+    </tr>
+    </table>
+
+    <h3>MCF7 ChIP-seq</h3>
+            <table>
+    <tr>
+        <td>Protein</td>
+        <td>Number of Reads</td> 
+        <td>Est Frag Len</td>
+        <td>Strand CrossCorr @ FragLen</td>
+        <td>Read Len</td>
+        <td>Strand CC @ ReadLen</td>
+        <td>Strand Shift w/ Min CC</td>
+        <td>Min CC</td>
+        <td>NSC</td>
+        <td>RSC</td>
+        <td>Quality-Tag</td>
+    </tr>
+    <tr>
+        <td>CTCF ENCFF000SAO</td>
+        <td>29014393</td>
+        <td>105</td>
+        <td>0.502501845124848</td>
+        <td>40</td>
+        <td>0.3157397</td>
+        <td>1500</td>
+        <td>0.1747713</td>
+        <td>2.875197</td>
+        <td>2.324851</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>FOXA1 ERR022028</td>
+        <td>15930487</td>
+        <td>125</td>
+        <td>0.344320115166499</td>
+        <td>50</td>
+        <td>0.2536586</td>
+        <td>1500</td>
+        <td>0.1332139</td>
+        <td>2.584715</td>
+        <td>1.752723</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>CTCF SRR3170060</td>
+        <td>21064027</td>
+        <td>155</td>
+        <td>0.275301599346677</td>
+        <td>55</td>
+        <td>0.2236579</td>
+        <td>1500</td>
+        <td>0.1570346</td>
+        <td>1.753127</td>
+        <td>1.775159</td>
+        <td>2</td>
+    </tr>
+    </table>
+    </div>
+    <button class="collapsible">Bedtools Genomecov: Finding Histogram of Coverage for k36.umap File</button>
+    <div class="content">
+            <table>
+    <tr>
+        <td>Chromosome</td> 
+        <td>Depth of Coverage</td> 
+        <td>Number of Bases with Depth</td>
+        <td>Size of Chromosome</td>
+        <td>Fraction of Bases on Chromosome with Depth(col 2)</td>
+    </tr>
+    <tr>
+        <td>chr10</td>
+        <td>0</td>
+        <td>36190989</td>
+        <td>133797422</td>
+        <td>0.270491</td>
+    </tr>
+    <tr>
+        <td>chr10</td>
+        <td>1</td>
+        <td>97606433</td>
+        <td>133797422</td>
+        <td>0.729509</td>
+    </tr>
+    <tr>
+        <td>chr11</td>
+        <td>0</td>
+        <td>37326660</td>
+        <td>135086622</td>
+        <td>0.276316</td>
+    </tr>
+    <tr>
+        <td>chr11</td>
+        <td>1</td>
+        <td>97759962</td>
+        <td>135086622</td>
+        <td>0.723683</td>
+    </tr>
+    <tr>
+        <td>chr12</td>
+        <td>0</td>
+        <td>35583540</td>
+        <td>133275309</td>
+        <td>0.266993</td>
+    </tr>
+    <tr>
+        <td>chr12</td>
+        <td>1</td>
+        <td>97691769</td>
+        <td>133275309</td>
+        <td>0.733007</td>
+    </tr>
+    <tr>
+        <td>chr13</td>
+        <td>0</td>
+        <td>40806127</td>
+        <td>114364328</td>
+        <td>0.356808</td>
+    </tr>
+    <tr>
+        <td>chr13</td>
+        <td>1</td>
+        <td>73558201</td>
+        <td>114364328</td>
+        <td>0.643192</td>
+    </tr>
+    <tr>
+        <td>chr14</td>
+        <td>0</td>
+        <td>41167984</td>
+        <td>107043718</td>
+        <td>0.38459</td>
+    </tr>
+    <tr>
+        <td>chr14</td>
+        <td>1</td>
+        <td>65875734</td>
+        <td>107043718</td>
+        <td>0.61541</td>
+    </tr>
+    <tr>
+        <td>chr15</td>
+        <td>0</td>
+        <td>44074879</td>
+        <td>101991189</td>
+        <td>0.432144</td>
+    </tr>
+    <tr>
+        <td>chr15</td>
+        <td>1</td>
+        <td>57916310</td>
+        <td>101991189</td>
+        <td>0.567856</td>
+    </tr>
+    <tr>
+        <td>chr16</td>
+        <td>0</td>
+        <td>35193127</td>
+        <td>90338345</td>
+        <td>0.38957</td>
+    </tr>
+    <tr>
+        <td>chr16</td>
+        <td>1</td>
+        <td>55145218</td>
+        <td>90338345</td>
+        <td>0.61043</td>
+    </tr>
+    <tr>
+        <td>chr17</td>
+        <td>0</td>
+        <td>27723204</td>
+        <td>83257441</td>
+        <td>0.332982</td>
+    </tr>
+    <tr>
+        <td>chr17</td>
+        <td>1</td>
+        <td>55534237</td>
+        <td>83257441</td>
+        <td>0.667018</td>
+    </tr>
+    <tr>
+        <td>chr18</td>
+        <td>0</td>
+        <td>23488319</td>
+        <td>80373285</td>
+        <td>0.29224</td>
+    </tr>
+    <tr>
+        <td>chr18</td>
+        <td>1</td>
+        <td>56884966</td>
+        <td>80373285</td>
+        <td>0.70776</td>
+    </tr>
+    <tr>
+        <td>chr19</td>
+        <td>0</td>
+        <td>21176035</td>
+        <td>58617616</td>
+        <td>0.361257</td>
+    </tr>
+    <tr>
+        <td>chr19</td>
+        <td>1</td>
+        <td>37441581</td>
+        <td>58617616</td>
+        <td>0.638743</td>
+    </tr>
+    <tr>
+        <td>chr1</td>
+        <td>0</td>
+        <td>84847189</td>
+        <td>248956422</td>
+        <td>0.340811</td>
+    </tr>
+    <tr>
+        <td>chr1</td>
+        <td>1</td>
+        <td>164109233</td>
+        <td>248956422</td>
+        <td>0.659189</td>
+    </tr>
+    <tr>
+        <td>chr20</td>
+        <td>0</td>
+        <td>18375644</td>
+        <td>64444167</td>
+        <td>0.285141</td>
+    </tr>
+    <tr>
+        <td>chr20</td>
+        <td>1</td>
+        <td>46068523</td>
+        <td>64444167</td>
+        <td>0.714859</td>
+    </tr>
+    <tr>
+        <td>chr21</td>
+        <td>0</td>
+        <td>21217654</td>
+        <td>46709983</td>
+        <td>0.454242</td>
+    </tr>
+    <tr>
+        <td>chr21</td>
+        <td>1</td>
+        <td>25492329</td>
+        <td>46709983</td>
+        <td>0.545758</td>
+    </tr>
+    <tr>
+        <td>chr22</td>
+        <td>0</td>
+        <td>26216282</td>
+        <td>50818468</td>
+        <td>0.515881</td>
+    </tr>
+    <tr>
+        <td>chr22</td>
+        <td>1</td>
+        <td>24602186</td>
+        <td>50818468</td>
+        <td>0.484119</td>
+    </tr>
+    <tr>
+        <td>chr2</td>
+        <td>0</td>
+        <td>63801318</td>
+        <td>242193529</td>
+        <td>0.263431</td>
+    </tr>
+    <tr>
+        <td>chr2</td>
+        <td>1</td>
+        <td>178392211</td>
+        <td>242193529</td>
+        <td>0.736569</td>
+    </tr>
+    <tr>
+        <td>chr3</td>
+        <td>0</td>
+        <td>49908109</td>
+        <td>198295559</td>
+        <td>0.251685</td>
+    </tr>
+    <tr>
+        <td>chr3</td>
+        <td>1</td>
+        <td>148387450</td>
+        <td>198295559</td>
+        <td>0.748315</td>
+    </tr>
+    <tr>
+        <td>chr4</td>
+        <td>0</td>
+        <td>48257511</td>
+        <td>190214555</td>
+        <td>0.2537</td>
+    </tr>
+    <tr>
+        <td>chr4</td>
+        <td>1</td>
+        <td>141957044</td>
+        <td>190214555</td>
+        <td>0.7463</td>
+    </tr>
+    <tr>
+        <td>chr5</td>
+        <td>0</td>
+        <td>48744065</td>
+        <td>181538259</td>
+        <td>0.268506</td>
+    </tr>
+    <tr>
+        <td>chr5</td>
+        <td>1</td>
+        <td>132794194</td>
+        <td>181538259</td>
+        <td>0.731494</td>
+    </tr>
+    <tr>
+        <td>chr6</td>
+        <td>0</td>
+        <td>43237508</td>
+        <td>170805979</td>
+        <td>0.253138</td>
+    </tr>
+    <tr>
+        <td>chr6</td>
+        <td>1</td>
+        <td>127568471</td>
+        <td>170805979</td>
+        <td>0.746862</td>
+    </tr>
+    <tr>
+        <td>chr7</td>
+        <td>0</td>
+        <td>47144505</td>
+        <td>159345973</td>
+        <td>0.295863</td>
+    </tr>
+    <tr>
+        <td>chr7</td>
+        <td>1</td>
+        <td>112201468</td>
+        <td>159345973</td>
+        <td>0.704138</td>
+    </tr>
+    <tr>
+        <td>chr8</td>
+        <td>0</td>
+        <td>37332776</td>
+        <td>145138636</td>
+        <td>0.257221</td>
+    </tr>
+    <tr>
+        <td>chr8</td>
+        <td>1</td>
+        <td>107805860</td>
+        <td>145138636</td>
+        <td>0.742778</td>
+    </tr>
+    <tr>
+        <td>chr9</td>
+        <td>0</td>
+        <td>55769459</td>
+        <td>138394717</td>
+        <td>0.402974</td>
+    </tr>
+    <tr>
+        <td>chr9</td>
+        <td>1</td>
+        <td>82625258</td>
+        <td>138394717</td>
+        <td>0.597026</td>
+    </tr>
+    <tr>
+        <td>chrX</td>
+        <td>0</td>
+        <td>52256695</td>
+        <td>156040895</td>
+        <td>0.334891</td>
+    </tr>
+    <tr>
+        <td>chrX</td>
+        <td>1</td>
+        <td>103784200</td>
+        <td>156040895</td>
+        <td>0.665109</td>
+    </tr>
+    <tr>
+        <td>chrY</td>
+        <td>0</td>
+        <td>47889864</td>
+        <td>57227415</td>
+        <td>0.836834</td>
+    </tr>
+    <tr>
+        <td>chrY</td>
+        <td>1</td>
+        <td>9337551</td>
+        <td>57227415</td>
+        <td>0.163166</td>
+    </tr>
+    <tr>
+        <td>genome</td>
+        <td>0</td>
+        <td>987729443</td>
+        <td>3088269832</td>
+        <td>0.319833</td>
+    </tr>
+    <tr>
+        <td>genome</td>
+        <td>1</td>
+        <td>2100540389</td>
+        <td>3088269832</td>
+        <td>0.680167</td>
+    </tr>
+    </table>
+    </div>
+
+    <button class="collapsible">August 1 2018</button>
+    <div class="content">
+        -Regenerated all signal files using new phantompeakqualtools (manually enter the estimated fragment lengths and choose the best quality sample based on the output) and macs2 peak caller pipeline
+        <br>
+        -Re-run segway at 100,1,2,30, and 50 bp resolutions. To then run stable marriage between runs and also with new random seeds.
+        -Re-run with 10 different random seeds
+        -Visualize final results in UCSC Genome Browser after recolouring the segway.bed.gz files
+    </div>
+</div>
+
+<button class="collapsible">Week 16: Re-running Segway with Newly Generated Bedgraphs</button>
+<div class="nestcontent">
+    <button class="collapsible">Poster</button>
+    <div class="content">
+    <a href="https://docs.google.com/presentation/d/16ZQ1px0Ct7SdFQooHpWg2fRZuQIAoacWO_cTZSWGLVk/edit#slide=id.g4014c600ce_0_5">Link to Poster</a>
+</div>
+    <button class="collapsible">Errors</button>
+    <div class="content">
+<pre><code>(1063) 17:08:33 mordor:~/genomedata/test$ conda create --name segway hdf5=1.10.1 segway segtools
+Solving environment: done
+
+
+==&gt; WARNING: A newer version of conda exists. &lt;==
+  current version: 4.5.4
+  latest version: 4.5.9
+
+Please update conda by running
+
+    $ conda update -n base conda
+
+
+
+## Package Plan ##
+
+  environment location: /mnt/work1/users/home2/winniexu/miniconda2/envs/segway
+
+  added / updated specs: 
+    - hdf5=1.10.1
+    - segtools
+    - segway
+
+
+The following NEW packages will be INSTALLED:
+
+    autolog:                 0.1.3-py27_2              bioconda   
+    backports.unittest_mock: 1.3-py_2                  bioconda   
+    bedtools:                2.27.1-he941832_2         bioconda   
+    blosc:                   1.14.4-hfc679d8_0         conda-forge
+    bzip2:                   1.0.6-h470a237_2          conda-forge
+    ca-certificates:         2018.4.16-0               conda-forge
+    cairo:                   1.14.12-he56eebe_3        conda-forge
+    certifi:                 2018.4.16-py27_0          conda-forge
+    colorbrewer:             0.1.1-py27_2              bioconda   
+    curl:                    7.61.0-h93b3f91_1         conda-forge
+    drmaa:                   0.7.8-py_0                conda-forge
+    expat:                   2.2.5-hfc679d8_1          conda-forge
+    fontconfig:              2.13.0-h0c61d53_4         conda-forge
+    forked-path:             0.2.3-py27_2              bioconda   
+    freetype:                2.8.1-hfa320df_1          conda-forge
+    funcsigs:                1.0.2-py_2                conda-forge
+    genomedata:              1.4.1-py27h470a237_2      bioconda   
+    gettext:                 0.19.8.1-0                conda-forge
+    glib:                    2.55.0-h464dc38_2         conda-forge
+    gmtk:                    1.4.4-h2d50403_1          bioconda   
+    graphite2:               1.3.11-hfc679d8_0         conda-forge
+    graphviz:                2.38.0-7                  conda-forge
+    gsl:                     2.1-2                     conda-forge
+    harfbuzz:                1.8.5-h2bb21d5_0          conda-forge
+    hdf5:                    1.10.1-2                  conda-forge
+    hgtools:                 6.5.1-py_2                bioconda   
+    icu:                     58.2-hfc679d8_0           conda-forge
+    intel-openmp:            2018.0.3-0                           
+    jpeg:                    9c-h470a237_0             conda-forge
+    krb5:                    1.14.6-0                  conda-forge
+    libffi:                  3.2.1-3                   conda-forge
+    libgcc:                  7.2.0-h69d50b8_2                     
+    libgcc-ng:               7.2.0-hdf63c60_3                     
+    libgfortran:             3.0.0-1                              
+    libgfortran-ng:          7.2.0-hdf63c60_3                     
+    libiconv:                1.15-h470a237_1           conda-forge
+    libopenblas:             0.2.20-h9ac9557_7                    
+    libpng:                  1.6.34-ha92aebf_1         conda-forge
+    libssh2:                 1.8.0-h5b517e9_2          conda-forge
+    libstdcxx-ng:            7.2.0-hdf63c60_3                     
+    libtiff:                 4.0.9-he6b73bb_1          conda-forge
+    libtool:                 2.4.6-h470a237_1          conda-forge
+    libuuid:                 1.0.3-1                   conda-forge
+    libxcb:                  1.13-h470a237_2           conda-forge
+    libxml2:                 2.9.8-h422b904_2          conda-forge
+    lzo:                     2.10-0                    conda-forge
+    mkl:                     2018.0.3-1                           
+    mkl_fft:                 1.0.5-py27_0              conda-forge
+    mkl_random:              1.0.1-py27_0              conda-forge
+    mock:                    2.0.0-py27_0              conda-forge
+    mysql-connector-c:       6.1.6-2                   bioconda   
+    ncurses:                 5.9-10                    conda-forge
+    numexpr:                 2.6.6-py27_0              conda-forge
+    numpy:                   1.14.3-py27hcd700cb_2                
+    numpy-base:              1.14.3-py27h0ea5e3f_1                
+    openssl:                 1.0.2o-h470a237_1         conda-forge
+    optbuild:                0.1.11-py27_2             bioconda   
+    optplus:                 0.1.1-py27_2              bioconda   
+    pango:                   1.40.14-h9105a7a_2        conda-forge
+    pbr:                     4.2.0-py_0                conda-forge
+    pcre:                    8.39-0                    conda-forge
+    pip:                     18.0-py27_1               conda-forge
+    pixman:                  0.34.0-2                  conda-forge
+    pthread-stubs:           0.4-h470a237_1            conda-forge
+    pygraphviz:              1.3.1-py27_0              bioconda   
+    pytables:                3.4.4-py27_8              conda-forge
+    python:                  2.7.15-0                  conda-forge
+    r-base:                  3.4.1-4                   conda-forge
+    r-cairo:                 1.5_9-r341h4d1f301_1      conda-forge
+    r-cluster:               2.0.6-r3.4.1_0            conda-forge
+    r-glue:                  1.3.0-r341h470a237_1      conda-forge
+    r-lattice:               0.20_34-r3.4.1_0          conda-forge
+    r-latticeextra:          0.6_28-r3.4.1_0           conda-forge
+    r-magrittr:              1.5-r3.4.1_0              conda-forge
+    r-plyr:                  1.8.4-r341hfc679d8_1      conda-forge
+    r-rcolorbrewer:          1.1_2-r3.4.1_0            conda-forge
+    r-rcpp:                  0.12.17-r341h9d2a408_1    conda-forge
+    r-reshape2:              1.4.3-r341hfc679d8_1      conda-forge
+    r-stringi:               1.2.3-r341hfc679d8_1      conda-forge
+    r-stringr:               1.3.1-r341_0              conda-forge
+    readline:                7.0-0                     conda-forge
+    rpy2:                    2.8.5-py27r3.4.1_0        conda-forge
+    segtools:                1.1.14-py27r341h24bf2e0_2 bioconda   
+    segway:                  2.0.2-py27_2              bioconda   
+    setuptools:              40.0.0-py27_1             conda-forge
+    singledispatch:          3.4.0.3-py27_0            conda-forge
+    six:                     1.11.0-py27_1             conda-forge
+    sqlite:                  3.20.1-2                  conda-forge
+    textinput:               0.1.1-py27_2              bioconda   
+    tk:                      8.6.8-0                   conda-forge
+    ucsc-bedtobigbed:        366-h5eb252a_0            bioconda   
+    ucsc-bigwigtobedgraph:   366-h5eb252a_0            bioconda   
+    wheel:                   0.31.1-py27_1             conda-forge
+    xorg-kbproto:            1.0.7-h470a237_2          conda-forge
+    xorg-libice:             1.0.9-h470a237_4          conda-forge
+    xorg-libsm:              1.2.2-h470a237_5          conda-forge
+    xorg-libx11:             1.6.5-h470a237_2          conda-forge
+    xorg-libxau:             1.0.8-h470a237_6          conda-forge
+    xorg-libxdmcp:           1.1.2-h470a237_7          conda-forge
+    xorg-libxext:            1.3.3-h470a237_4          conda-forge
+    xorg-libxrender:         0.9.10-h470a237_2         conda-forge
+    xorg-renderproto:        0.11.1-h470a237_2         conda-forge
+    xorg-xextproto:          7.3.0-h470a237_2          conda-forge
+    xorg-xproto:             7.0.31-h470a237_7         conda-forge
+    xz:                      5.2.4-h470a237_1          conda-forge
+    zlib:                    1.2.11-h470a237_3         conda-forge
+
+Proceed ([y]/n)? y
+
+Preparing transaction: done
+Verifying transaction: / 
+SafetyError: The package for genomedata located at /mnt/work1/users/home2/winniexu/miniconda2/pkgs/genomedata-1.4.1-py27h470a237_2
+appears to be corrupted. The path 'lib/python2.7/site-packages/genomedata/__init__.pyc'
+has a sha256 mismatch.
+  reported sha256: 613977187639a205420e9eab1bed0349d62ca870b9ea529a7f2cef79461f9f4d
+  actual sha256: 514210c0876402ec4e964e6ae6dcbd45f410a38c8314ba0936801c2be57a80c8
+
+SafetyError: The package for genomedata located at /mnt/work1/users/home2/winniexu/miniconda2/pkgs/genomedata-1.4.1-py27h470a237_2
+appears to be corrupted. The path 'lib/python2.7/site-packages/genomedata/_close_data.pyc'
+has a sha256 mismatch.
+  reported sha256: 0c2f1de6d7ee084bd91b49f3dd3b0b0b9949c6d6ea6cd6d3680a46a626bebe2b
+  actual sha256: 032b3487abe58b429d18dafe03c745e7a65fb3d03191ec459dc05e6facad7c4f
+
+SafetyError: The package for genomedata located at /mnt/work1/users/home2/winniexu/miniconda2/pkgs/genomedata-1.4.1-py27h470a237_2
+appears to be corrupted. The path 'lib/python2.7/site-packages/genomedata/_erase_data.pyc'
+has a sha256 mismatch.
+  reported sha256: 41dabde2eab468b0643a6b219320fbcbe3d98b5cd50d0b088b66851cdf776f16
+  actual sha256: 6254568f7f240b5aa17d8ff07e23685a97d522d5aac9d909ce432f1b03cf9c54
+
+SafetyError: The package for genomedata located at /mnt/work1/users/home2/winniexu/miniconda2/pkgs/genomedata-1.4.1-py27h470a237_2
+appears to be corrupted. The path 'lib/python2.7/site-packages/genomedata/_hardmask.pyc'
+has a sha256 mismatch.
+  reported sha256: 907394a11404f0eca4fbffe90d5ea92ade3fcf9026d83648ae650229931bba92
+  actual sha256: ea3d30a57b37c1137fb39f6fde1842697116d2191cafcb894e4b574c3aabc502
+
+SafetyError: The package for genomedata located at /mnt/work1/users/home2/winniexu/miniconda2/pkgs/genomedata-1.4.1-py27h470a237_2
+appears to be corrupted. The path 'lib/python2.7/site-packages/genomedata/_hardmask_parsers.pyc'
+has a sha256 mismatch.
+  reported sha256: af1a31a789a03e2bc7489d41ab0c14ae5683a9d74de8e9a3ce10c8826a7e5e89
+  actual sha256: 6a01a644a89ad6b13db2fbf2fb4bf230cad3492d934b5ca1be93a8f0d21c2146
+
+SafetyError: The package for genomedata located at /mnt/work1/users/home2/winniexu/miniconda2/pkgs/genomedata-1.4.1-py27h470a237_2
+appears to be corrupted. The path 'lib/python2.7/site-packages/genomedata/_histogram.pyc'
+has a sha256 mismatch.
+  reported sha256: 01ff3059c3d104319178b22cc6e8900178e5000530737a1c1fb06d23a4de2939
+  actual sha256: d8ce7aae45acddb57ca2835cf1397c2c3cff962a427f204386a914a73ab9b257
+
+SafetyError: The package for genomedata located at /mnt/work1/users/home2/winniexu/miniconda2/pkgs/genomedata-1.4.1-py27h470a237_2
+appears to be corrupted. The path 'lib/python2.7/site-packages/genomedata/_info.pyc'
+has a sha256 mismatch.
+  reported sha256: 935f2f6019afb7b4032032962a2b29e2910f850f865807c7196f689d9acdede6
+  actual sha256: 54ee2c41106281cf669eb6736804082f76c4bd7b6a4132ff636b6adaab6985e9
+
+SafetyError: The package for genomedata located at /mnt/work1/users/home2/winniexu/miniconda2/pkgs/genomedata-1.4.1-py27h470a237_2
+appears to be corrupted. The path 'lib/python2.7/site-packages/genomedata/_load_data.pyc'
+has a sha256 mismatch.
+  reported sha256: e33ad690ac7f193ab44bc60db33b0932c6b2356b0aad28f363a20ad74d4a4d3b
+  actual sha256: 546d70780caf60dc5f9c018982d7a43648a332b839052f2a1e5c5b891ce65988
+
+SafetyError: The package for genomedata located at /mnt/work1/users/home2/winniexu/miniconda2/pkgs/genomedata-1.4.1-py27h470a237_2
+appears to be corrupted. The path 'lib/python2.7/site-packages/genomedata/_load_seq.pyc'
+has a sha256 mismatch.
+  reported sha256: 774eaf8762386a0ce48d5fee4d4c0e600ac4b241f17208e61a6bbfa88d454350
+  actual sha256: 41be2319bfd66a201889df8f0936d73cddaa2ef825c49499b200f1622ae948c4
+
+SafetyError: The package for genomedata located at /mnt/work1/users/home2/winniexu/miniconda2/pkgs/genomedata-1.4.1-py27h470a237_2
+appears to be corrupted. The path 'lib/python2.7/site-packages/genomedata/_open_data.pyc'
+has a sha256 mismatch.
+  reported sha256: 64a9b8ef727724a9d1d6a2985f704a678269362c5f222a53ccf2e16a9a130fa0
+  actual sha256: 7b42b7a6ab4b4a52d63efc9cd2990ed0a5c7c416d75512b9864be5a0ac3fac98
+
+SafetyError: The package for genomedata located at /mnt/work1/users/home2/winniexu/miniconda2/pkgs/genomedata-1.4.1-py27h470a237_2
+appears to be corrupted. The path 'lib/python2.7/site-packages/genomedata/_query.pyc'
+has a sha256 mismatch.
+  reported sha256: 6ccf5285dcfbd2c92223376d8c1e811f644f8a20359b2f0c3177cc8795a00b75
+  actual sha256: 9b3620600db271606d911c3c44c7c000e6d64be1884636991960394e1cd0a2b9
+
+SafetyError: The package for genomedata located at /mnt/work1/users/home2/winniexu/miniconda2/pkgs/genomedata-1.4.1-py27h470a237_2
+appears to be corrupted. The path 'lib/python2.7/site-packages/genomedata/_report.pyc'
+has a sha256 mismatch.
+  reported sha256: a8758584fa0264be80be7932d8e6c21ff6c3f2052089c17d556c0c59eaa2c645
+  actual sha256: bf9f99a7908915040905f88b9571bb04baaead755aa4549b4df7371ab55a40ef
+
+SafetyError: The package for genomedata located at /mnt/work1/users/home2/winniexu/miniconda2/pkgs/genomedata-1.4.1-py27h470a237_2
+appears to be corrupted. The path 'lib/python2.7/site-packages/genomedata/_util.pyc'
+has a sha256 mismatch.
+  reported sha256: 3bbd9a6310a35c925d026daae4685414d93fe32c6be4fabe19ee79458d6d58af
+  actual sha256: 9326d54b7737b7ddccb60a6fe28c2643dd558335a8579f881a7ec5c725ecda89
+
+SafetyError: The package for genomedata located at /mnt/work1/users/home2/winniexu/miniconda2/pkgs/genomedata-1.4.1-py27h470a237_2
+appears to be corrupted. The path 'lib/python2.7/site-packages/genomedata/load_genomedata.pyc'
+has a sha256 mismatch.
+  reported sha256: fa35e1bb4960f6d289b84909e7428f80e3dfa6571cbd6bda966444bf20e85cf7
+  actual sha256: e0d1930a64b1952c2f5fb4e13236c0c117f73b555232b8ff8a478db7a170ab88
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: defaults::libgfortran-3.0.0-1, defaults::libgcc-7.2.0-h69d50b8_2
+  path: 'lib/libgfortran.so.3.0.0'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: conda-forge::gettext-0.19.8.1-0, conda-forge::gsl-2.1-2, defaults::libgcc-ng-7.2.0-hdf63c60_3, conda-forge::readline-7.0-0
+  path: 'share/info/dir'
+
+
+ClobberError: This transaction has incompatible packages due to a shared path.
+  packages: defaults::libgfortran-3.0.0-1, defaults::libgcc-7.2.0-h69d50b8_2
+  path: 'lib/libgfortran.so.3'
+
+
+
+
+done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate segway
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+</code></pre>
+
+    Another Segway Error
+    <br>
+    <pre><code>
+/mnt/work1/users/home2/winniexu/miniconda2/envs/segway/lib/python2.7/site-packages/genomedata/__init__.py:781: UserWarning: slice of chromosome   
+data spans more than one supercontig (filling gaps with 'NaN')
+  warn("slice of chromosome data spans more than one supercontig"
+ERROR: discrete observed random variable 'presence__ERalpha', frame 0, line 48, specifies a feature element 6:6 that is out of discrete range ([3:
+5] inclusive) of observation matrix
+/mnt/work1/users/home2/winniexu/miniconda2/envs/segway/lib/python2.7/site-packages/genomedata/__init__.py:781: UserWarning: slice of chromosome   
+data spans more than one supercontig (filling gaps with 'NaN')
+  warn("slice of chromosome data spans more than one supercontig"
+ERROR: discrete observed random variable 'presence__ERalpha', frame 0, line 48, specifies a feature element 6:6 that is out of discrete range ([3:
+5] inclusive) of observation matrix
+    </code></pre>
+    </div>
+</div>
+
+<button class="collapsible">Week 17: Poster Presentation + Lab Meeting Presentation + Future Directions</button>
+<div class="nestcontent">
+    <button class="collapsible">Lab Meeting Presentation</button>
+    <div class="content">
+        <a href="https://docs.google.com/presentation/d/1FhPC75eeJJSTKwuKS3tBcom6UNmZ6IY1GL0pMXwbf70/edit#slide=id.g3fa4357d2b_0_0">Link to Google Slides Presentation</a>
+    <br>
+    -Feedback from meeting:
+    <br>
+    <pre><code>
+    -Use ChIPSim simulated ChIP-seq data as gold standard control
+    -Add input/control track from ENCODE (for both ChIP-seq and ChIP-exo) as another experimental variable in addition to resolution, assay, rand
+    -Run stable marriage both ways to show that same results occur
+    -ChIP-seq 1bp UCSC: Include Oregano input track and repeat master track
+    -Re-run Segway with segment length changes (--seg-table to set hard minimum segment length) b/t both ChIP-exo & ChIP-seq  (consistent length for comparison on UCSC)
+    -Variance sample in stable marriage (vs just mean from annotation beds)
+    </code></pre>
+    </div>
+</div>
+
+<button class="collapsible">Week 18: Final Week</button>
+<div class="nestcontent">
+    <button class="collapsible">Bitbucket</button>
+    <div class="content">
+        <a href="https://bitbucket.org/hoffmanlab/sequencing-resolution-analysis/src/default/">Link to Bitbucket for Summer Project</a>
+    </div>
+    <button class="collapsible">ChIP-Sim RNotebook</button>
+    <div class="content">
+        <a href="https://bioconductor.org/packages/release/bioc/vignettes/ChIPsim/inst/doc/ChIPsimIntro.R">ChIP-sim Code Blocks</a>
+        <br>
+        <a href="https://www.bioconductor.org/packages/devel/bioc/vignettes/ChIPsim/inst/doc/ChIPsimIntro.pdf">Link to Protocol</a>
+        <br>
+        <a href="./ChIPSim.nb.html">Notebook</a>
+        <br>
+        Note: for simulation step, if using first feature as specified in protocol, we get an index out of range. However, using 2nd index works fine.
+    </div>
+    <button class="collapsible">Using Sci-kit-Learn for Francis' Analyses</button>
+    <div class="content">
+    Using sci-kit learn NearestCentroid algorithm.
+    <br>
+    Analysis question: Given the varying locations of enhancer locations from fantom5 dataset, and given RNA-seq and chromatin accessbility across the entirety of the genome, can we train a classifier to tell if a certain loci is an enhancer region.
+    <br>
+    Datasets: DNAse-seq (chromatin accessbility) and RNA-seq (transcriptional activity/level)
+    <br>
+    Note: some missing data was imputed for use with machine learning algorithm. We train on a variety of cell linesand identify/validate on our test cell lines.
+    </div>
+</div>
+
+
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+for (i = 0; i < coll.length; i++){
+    coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            var parentNode = this.parentNode;
+            if (parentNode.className == "nestcontent") {
+                parentNode.style.maxHeight = parentNode.scrollHeight + content.scrollHeight + "px";
+            }
+        }
+    });
+}
+</script>
+
+</body>
+</html>
