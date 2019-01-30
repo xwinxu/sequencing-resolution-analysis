@@ -1,5 +1,5 @@
 # Exploring the Differential Effects of Sequencing Resolution on Semi-Automated Genome Annotations
-A project from Summer 2018 that compared the utility of newer ChIP methods ChIP-exo and ChIP-nexus on its effects on Segway's ability to generate annotations from this data of higher signal to noise ratio and near single base pair resolution.
+A project from Summer 2018 that compared the utility of newer ChIP methods ChIP-exo and ChIP-nexus on its effects on Semi-Automated Genome Annotation (SAGA) method, Segway's, ability to generate annotations from this data of higher signal to noise ratio and near single base pair resolution.
 
 ## Pipeline
 1. Data Cleaning (data_preprocessing/)
